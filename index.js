@@ -12,12 +12,13 @@ app.use(express.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname,'public')));
 
+app.get('/api/v1/sign-in',(req,res) =>{
 
-app.get('/',(req,res)=>{
 
+   res.send('hello world, hello world');
 
-  res.send('hello world!');
 });
+
 
 //Set environment Port
 

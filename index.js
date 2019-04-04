@@ -16,11 +16,12 @@ app.use(express.static(path.join(__dirname,'public')));
 app.get('/',(req,res)=>{
 
 
-    res.write('hello world');
+  res.send('hello world!');
 });
 
 //Set environment Port
-let PORT = process.env.PORT || 5000;
+
+let PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log('listening to port ' + PORT);
 });

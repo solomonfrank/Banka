@@ -13,11 +13,6 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'public')));
 
 
-app.get('/',(req,res)=>{
-
-
-    res.send('hello world');
-});
 
 //Set environment Port
 let PORT = process.env.PORT || 5000;

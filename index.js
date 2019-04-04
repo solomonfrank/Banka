@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname,'public')));
 app.get('/',(req,res)=>{
 
 
-    res.write('hello world');
+    res.send('hello world');
 });
 
 //Set environment Port

@@ -1,0 +1,802 @@
+body{
+	margin:0;
+	padding:0;
+	
+  overflow-y: scroll;
+  background-color:rgba(235, 235, 235,0.4);
+  box-sizing:border-box;
+}
+
+.icon{
+	display:none;
+}
+
+.navbar-wrapper{
+	position:fixed;
+	background-color:blue;
+	color:white;
+	
+	z-index:9999999999;
+	width:100%;
+}
+
+
+
+.navbar-item-left{
+	
+	flex-basis: 50%;
+	list-style-type:none;
+	
+}
+
+
+.navbar-item-left li{
+	float:left;
+		color:white;
+		font-size:19px;
+		font-family:bold;
+		padding:10px;
+}
+
+input{
+	padding:7px;
+
+	border:1px solid rgba(22, 80, 227,0.3);
+}
+input:first-child{ 
+  width:250px;
+}
+input:last-child{
+	
+	color:white;
+}
+.navbar-right{
+	
+	flex-basis: 50%;
+	list-style-type:none;
+}
+	.navbar-right li{
+		float:left;
+		padding:10px;
+		margin-right:5px;
+		
+	}
+	
+	.navbar-right li a{
+		color:white;
+		font-size:19px;
+		font-family:bold;
+		margin-left:10px;
+		text-decoration:none;
+		
+	}
+	
+	
+	.navbar-right li:last-child{
+		margin-right:10px;
+	
+	}
+.container{
+	padding: 0;
+		margin-top:0;
+        position:relative;
+        display:flex;
+	
+}
+   .navbar{
+	z-index:9999999999;
+}	
+.sidebar{
+	background-color:rgb(240, 240, 240);
+	width:200px;
+	height:100%;
+	position:fixed;
+top:0;
+left:0;;
+	
+}	
+	 .sidebar a {
+	display: block;
+	color: rgba(0, 0, 0, 0.8);
+	padding: 10px;
+	text-decoration: none;
+	font-size:17px;
+	
+  }
+  
+  .sidebar li:first-child{
+		 margin-top:80px;
+	 }
+	 div.content {
+
+	padding: 1px 16px;
+	
+	margin-left:200px;
+   color:black;
+   margin-top:150px;
+  
+	
+  }
+  
+  .account-balance{
+	 
+	  background-color:white;
+	  color:rgba(0,0,0,0.7);
+	  padding:10px;
+	  border:1px solid rgba(0,0,0,0.2);
+  }
+	 
+	
+.icon{
+		display:block;
+	
+		width:40px;
+		
+	}
+	
+	 ul {
+	list-style-type:none;
+	}
+	
+	.icon li{
+		margin-top:-15px;
+		margin-left:-20px;
+		
+	}
+	.icon{
+		margin-top:40px;
+		
+	}
+.burger{
+		cursor:pointer;
+		
+		
+		
+	}
+
+    span.icon-bar{
+		background-color:white;
+		width:46px;
+		height:5px;
+		margin-bottom:5px;
+		position:relative;
+		display:block;
+	cursor:pointer;	
+	}
+	
+.icon{
+	display:none;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  color:rgba(0,0,0,0.6);
+ width:100%;
+}
+
+ td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th{
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+ tbody tr:hover {
+	background-color: #f5f5f5;
+}
+.transactions{
+    background-color: white;
+    border: 1px solid rgba(0,0,0,.1);
+    margin:  40px 0;
+    padding: 0
+	
+}
+.transaction-wrapper{
+	padding:0 0;
+}
+.transaction-title{
+	text-align:center;
+
+	color:silver;
+}
+	 
+	 
+@media screen and (max-width:785px){
+	
+.icon{
+	display:block;
+	float:right;
+	margin-top:20px;
+}
+.side{
+	display:block;
+}
+
+.wrap-form form{
+	display:none;
+}
+.sidebar{
+	display:none;
+}
+div .content{
+	margin-left:0;
+}
+.account-balance{
+	margin-left:0px;
+	
+}
+} 
+
+@media screen and (min-width:900px){
+	.navbar-wrapper{
+		display:flex;
+	justify-content:space-between;
+	}
+}
+	@media screen and (max-width:900px){
+	.wrap-form form{
+	display:none;
+}
+}
+
+/*	       Admin      */
+navbar-wrapper super{
+	position:relative;
+}
+
+
+	  
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+

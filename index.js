@@ -14,15 +14,12 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.get('/api/v1/sign-in',(req,res) =>{
 
-
    res.send('hello world, hello world');
-
 });
 
 
 //Set environment Port
-
-let PORT = process.env.PORT || 3000;
+let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log('listening to port ' + PORT);
 });

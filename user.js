@@ -1,6 +1,9 @@
-let counter =1;
 
 
+
+
+
+let counter = 1;
 
   //session.users = [];
   let usersData = [];
@@ -23,7 +26,9 @@ class User{  //generic user class
         
         
         this._id = counter; // user id to keep track of users
+      
         counter ++;
+       
     }
    
 
@@ -73,9 +78,15 @@ class User{  //generic user class
         this.isAdmin =true;
     }
 
+    getId(){
+        return this._id;
+    }
+
    static getLoggedIn(){
        return this._loggedIn;
    }
+
+
 
 save(){
 
@@ -85,10 +96,11 @@ save(){
     let password = this.getPassword();
     let type = this.getType();
     let isAdmin = this.getIsAdmin();
+    let id = this.getIsAdmin();
 
 
   let  users = {
-        id : this._id,
+        id,
         email,
         first,
         last,
@@ -103,7 +115,7 @@ save(){
  
  
      return {
-        id : this.id,
+        id :this._id,
         email,
         first,
         last

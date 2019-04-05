@@ -2,8 +2,13 @@ let counter =1;
 
 
 
-  session.users = [];
-  let usersData = [];
+  session.users = [
+      {
+          email: "solomonrock13@yahoo.com",
+          password : 12345
+      }
+  ];
+  let usersData = session.users;
 
  let accDb = [];
 let accountCounter = 0;

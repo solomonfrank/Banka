@@ -3,13 +3,7 @@ const session = require('express-session');
 const sessionStorage = require('sessionstorage');
 
 
-<<<<<<< HEAD
-//app.use(session({secret:"ygygugugt66r56rr5",resave:false,saveUninitialized:true}));
 let counter = 1;
-
-  session.users = [];
-  let usersData = [];
-=======
   session.users = [
       {
           email: "solomonrock13@yahoo.com",
@@ -17,7 +11,7 @@ let counter = 1;
       }
   ];
   let usersData = session.users;
->>>>>>> develop
+
 
  let accDb = [];
 let accountCounter = 0;

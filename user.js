@@ -3,10 +3,7 @@ let counter =1;
 
 
   session.users = [
-      {
-          email: "solomonrock13@yahoo.com",
-          password : 12345
-      }
+    
   ];
   let usersData = session.users;
 
@@ -102,8 +99,9 @@ save(){
         isAdmin
        
     }
-   usersData.push(users);
-   this.saveStorage();
+   //usersData.push(users);
+   session.users.push(users);
+  // this.saveStorage();
 
  
  

@@ -117,19 +117,26 @@ save(){
        session.users = [];
     
    }
-    session.users.push(users);
+   let lastInsert;
+   if(session.users.push(users)){
+       lastInsert = {
+        id :this._id,
+        email,
+        first,
+        last
+     }
+     return lastInsert;
+   }else{
+       lastInsert = false;
+       return lastInsert;
+   };
    
 
   
 
  
  
-     return {
-        id :this._id,
-        email,
-        first,
-        last
-     }
+     
 }
 
   static login(email,password){

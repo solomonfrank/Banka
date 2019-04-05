@@ -3,6 +3,7 @@ const path = require('path');
 
 const app = express();
 const User = require('./user');
+const session = require('express-session');
 
 
 // body parser middleware
@@ -21,8 +22,13 @@ app.post('/api/v1/sign-up',(req,res) =>{
      let lastName = req.body.lastName
 
   let user =    new User(firstName,lastName,password,email);
-  user.save();
-  console.log(session.users);
+  let person  =    new User(firstName,lastName,password,email);
+
+ let userDetail =  person.save();
+ user.save();
+  if(!userDetail) return res.status(400).json({status:400, msg:"error in the values your submitted"})
+  res.status(200).json({status:200, data : userDetail});
+  //res.json(session.users);
     
   
 });

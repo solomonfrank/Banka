@@ -7,7 +7,8 @@ let counter = 1;
   session.users = [
       {
           email: "solomonrock13@yahoo.com",
-          password : 123456
+          password : 123456,
+          isLoggedIn:false
       }
   ];
   let usersData = session.users;
@@ -141,7 +142,8 @@ save(){
       
       if(!found) return false;
        
-      this._loggedIn = true;
+      //this._loggedIn = true;
+      found.isLoggedIn = true;
       return found;
       
 

@@ -41,11 +41,15 @@ app.post('/api/v1/sign-in',(req,res) =>{
      let password = req.body.password;
 
   let user =    User.login(email,password);
+
+
+
    if(user === false) return res.status(400).json(
      {"status": 400,
        "msg" : "invalid credential"
     });
-
+  
+  
     users = {
       "status":200,
       "data":user

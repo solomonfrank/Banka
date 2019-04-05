@@ -120,7 +120,7 @@ save(){
        
     }
    //usersData.push(users);
-<<<<<<< HEAD
+
    //this.saveStorage();
    //this.saveSession(users)
    if(!session.users){
@@ -131,10 +131,6 @@ save(){
    
 
   
-=======
-   session.users.push(users);
-  // this.saveStorage();
->>>>>>> develop
 
  
  

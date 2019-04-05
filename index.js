@@ -17,7 +17,7 @@ app.post('/api/v1/sign-in',(req,res) =>{
      let email= req.body.email;
      let password = req.body.password;
 
-  let user =    User.login(email,password);
+  let user =   User.login(email,password);
     
    res.json(user);
 });

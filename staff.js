@@ -1,4 +1,6 @@
-class staff extends User{
+const User = require('./user');
+
+class Staff extends User{
 
     debitAcc(accNum,accData,cashier,amount){
  let found  =  accData.find( acc => acc.item === accNum);

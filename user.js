@@ -2,7 +2,7 @@ let counter =1;
 
 
 
-  session.users = [];
+  //session.users = [];
   let usersData = [];
 
  let accDb = [];
@@ -98,7 +98,7 @@ save(){
        
     }
    usersData.push(users);
-   this.saveStorage();
+   //this.saveStorage();
 
  
  
@@ -109,42 +109,6 @@ save(){
         last
      }
 }
-static saveSession(users){
-    session.users.push(users);
-}
-
-
- saveStorage(){
-    let str = JSON.stringify(usersData);
-    sessionStorage.setItem('item', str);
-}
-
-static getSave(){
- let str = sessionStorage.getItem('item');
- usersData = JSON.parse(str);
- if(!usersData){
-   return  usersData = [];
- }
- return usersData;
-}
-static sessionSave(){
-   
-    session.users = usersData;
-   }
-   
-   static getSession(){
-       return session.users;
-   }
-   
-   static setSession(){
-         
-       
-       if(usersData.length === 0) return usersData = [];
-       
-      return  usersData = User.session.users;
-      
-       
-   }
 
   static login(email,password){
       let found = usersData.find(user => (user.email === email && user.password === password));

@@ -8,6 +8,13 @@ const staff = require('./staff');
 const admin = require('./admin');
 
 
+//let counter =1;
+
+  //let usersData = [];
+
+let u = new User("solomon","rock",1234567,"solomon13@yahoo.com");
+let p = u.save();
+console.log(p);
 // body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));

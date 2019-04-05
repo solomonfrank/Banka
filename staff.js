@@ -29,3 +29,5 @@ class staff extends User{
       };
     }
 }
+
+module.exports = Staff;

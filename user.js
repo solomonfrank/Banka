@@ -4,17 +4,7 @@ const sessionStorage = require('sessionstorage');
 
 
 let counter = 1;
-  session.users = [
-<<<<<<< HEAD
-      {
-          email: "solomonrock13@yahoo.com",
-          password : 123456,
-          isLoggedIn:false
-      }
-=======
-    
->>>>>>> develop
-  ];
+  session.users = [];
   let usersData = session.users;
 
 

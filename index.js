@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname,'public')));
 
-app.get('node',(req,res) =>{
+app.get('/api/v1/sign-in',(req,res) =>{
 
 
    res.send('hello world, hello world');

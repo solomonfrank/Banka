@@ -4,6 +4,7 @@ const sessionStorage = require('sessionstorage');
 
 
 let counter = 1;
+console.log(counter);
   session.users = [];
   let usersData = session.users;
 
@@ -26,9 +27,10 @@ class User{  //generic user class
         
         
         this._id = counter; // user id to keep track of users
+        console.log(counter);
       
-        counter ++;
-       
+        counter ++ ;
+       console.log(counter);
     }
    
 
@@ -96,7 +98,7 @@ save(){
     let password = this.getPassword();
     let type = this.getType();
     let isAdmin = this.getIsAdmin();
-    let id = this.getIsAdmin();
+    let id = this.getId();
 
 
   let  users = {

@@ -5,11 +5,15 @@ const sessionStorage = require('sessionstorage');
 
 let counter = 1;
   session.users = [
+<<<<<<< HEAD
       {
           email: "solomonrock13@yahoo.com",
           password : 123456,
           isLoggedIn:false
       }
+=======
+    
+>>>>>>> develop
   ];
   let usersData = session.users;
 
@@ -116,6 +120,7 @@ save(){
        
     }
    //usersData.push(users);
+<<<<<<< HEAD
    //this.saveStorage();
    //this.saveSession(users)
    if(!session.users){
@@ -126,6 +131,10 @@ save(){
    
 
   
+=======
+   session.users.push(users);
+  // this.saveStorage();
+>>>>>>> develop
 
  
  

@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
+const User = require('./user');
 
 
 // body parser middleware
@@ -12,14 +13,18 @@ app.use(express.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname,'public')));
 
-app.post('/api/v1/sign-in',(req,res) =>{
+app.post('/api/v1/sign-up',(req,res) =>{
    
      let email= req.body.email;
      let password = req.body.password;
+     let firstName = req.body.firstName;
+     let lastName = req.body.lastName
 
-  let user =    User.login(email,password);
+  let user =    new User(firstName,lastName,password,email);
+  user.save();
+  console.log(session.users);
     
-   res.json(user);
+  
 });
 
 

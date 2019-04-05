@@ -12,9 +12,15 @@ app.use(express.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname,'public')));
 
-app.get('/api/v1/sign-in',(req,res) =>{
-
-   res.send('hello world, hello world');
+app.post('/api/v1/sign-in',(req,res) =>{
+   
+     let email= req.body.email;
+     let password = req.body.password;
+     const sign = {
+       email,
+       password
+     }
+   res.json(sign);
 });
 
 

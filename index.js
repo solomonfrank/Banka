@@ -33,6 +33,18 @@ app.post('/api/v1/sign-up',(req,res) =>{
   
 });
 
+// sign in route
+
+app.post('/api/v1/sign-in',(req,res) =>{
+   
+     let email= req.body.email;
+     let password = req.body.password;
+
+  let user =   User.login(email,password);
+    if(!user) return res.status(400).json({status:400,msg:"invalid credential"});
+  
+    res.status(200).json({status:200, data : user});
+})
 
 //Set environment Port
 let PORT = process.env.PORT || 5000;

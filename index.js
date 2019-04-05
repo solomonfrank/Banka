@@ -24,7 +24,7 @@ const admin = require('./admin');
 //console.log(y);
 //console.log(usersData);
 //console.log(User.getSession());
-console.log(session.users);
+//console.log(session.users);
 
 
 // body parser middleware
@@ -41,8 +41,16 @@ app.post('/api/v1/sign-in',(req,res) =>{
      let password = req.body.password;
 
   let user =    User.login(email,password);
-    
-   res.json(user);
+   if(user === false) return res.status(400).json(
+     {"status": 400,
+       "msg" : "invalid credential"
+    });
+
+    users = {
+      "status":200,
+      "data":user
+    }
+   res.status(200).json(users);
 });
 
 

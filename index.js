@@ -2,6 +2,10 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
+const User = require('./user');
+const  account = require('./account');
+const staff = require('./staff');
+const admin = require('./admin');
 
 
 // body parser middleware

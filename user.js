@@ -7,7 +7,7 @@ let counter = 1;
   session.users = [
       {
           email: "solomonrock13@yahoo.com",
-          password : 12345
+          password : 123456
       }
   ];
   let usersData = session.users;
@@ -139,7 +139,7 @@ save(){
   static login(email,password){
       let found = usersData.find(user => (user.email === email && user.password === password));
       
-      if(!found) return {msg : "invalid credential"};
+      if(!found) return false;
        
       this._loggedIn = true;
       return found;

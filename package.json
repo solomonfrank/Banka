@@ -18,6 +18,7 @@
   "homepage": "https://github.com/solomonfrank/UIs#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "sessionstorage": "^0.1.0"
   }
 }

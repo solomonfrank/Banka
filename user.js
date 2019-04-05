@@ -1,11 +1,12 @@
 
+const session = require('express-session');
+const sessionStorage = require('sessionstorage');
 
 
-
-
+//app.use(session({secret:"ygygugugt66r56rr5",resave:false,saveUninitialized:true}));
 let counter = 1;
 
-  //session.users = [];
+  session.users = [];
   let usersData = [];
 
  let accDb = [];
@@ -109,8 +110,17 @@ save(){
         isAdmin
        
     }
-   usersData.push(users);
+   //usersData.push(users);
    //this.saveStorage();
+   //this.saveSession(users)
+   if(!session.users){
+       session.users = [];
+    
+   }
+    session.users.push(users);
+   
+
+  
 
  
  
@@ -133,12 +143,54 @@ save(){
 
   }
 
+  saveSession(users){
+   
+    session.users.push(users);
+    session.users =usersData;
+}
+
+  static sessionSave(){
+  
+
+    session.users = usersData;
+   }
+   
+   static getSession(){
+       return session.users;
+   }
+   
+   static setSession(){
+         
+       
+       if(usersData.length === 0) return usersData = [];
+       
+      return  usersData = User.session.users;
+      
+       
+   }
+
   static logout(){
       this._loggedIn = false;
   }
+
+  saveStorage(){
+    let str = JSON.stringify(usersData);
+    sessionStorage.setItem('item', str);
 }
 
+static getSave(){
+ let str = sessionStorage.getItem('item');
+ usersData = JSON.parse(str);
+ if(!usersData){
+   return  usersData = [];
+ }
+ return usersData;
+}
+ 
+}
 
+//console.log(usersData);
 
 
 module.exports = User;
+

@@ -8,11 +8,15 @@ class Admin extends User{
     }
 
     deleteAcc(acc,array){
-
-    let found =accDb.filter(user => user.accNumber !== acc)
       
-     if (!found) return false;
-     return found;
+    let found = accArray.indexOf(acc)
+    if(found === -1){
+        return false;
+    }else{
+        let found = accArray.filter(user => user.accNumber !== acc);
+        return found;
+    }
+   
     }
 
     selectStaff(){

@@ -3,6 +3,7 @@ const path = require('path');
 
 const app = express();
 const User = require('./user');
+const Account = require('./account');
 
 
 // body parser middleware
@@ -44,7 +45,24 @@ app.post('/api/v1/sign-in',(req,res) =>{
     if(!user) return res.status(400).json({status:400,msg:"invalid credential"});
   
     res.status(200).json({status:200, data : user});
-})
+});
+
+app.post('/api/v1/create-account',(req,res) =>{
+   
+  if(session.loggedIn){
+    let email= req.body.email;
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let openingBalance = req.body.openingBalance;
+    let type = req.body.type;
+
+    const person = new Account(firstName,lastName,email,type,openingBalance);
+
+  }
+
+
+
+});
 
 //Set environment Port
 let PORT = process.env.PORT || 5000;

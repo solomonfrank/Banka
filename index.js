@@ -76,6 +76,19 @@ app.get('/api/v1/logout',(req, res)=>{
   res.json({msg : 'you have successfully sign out'});
 });
 
+//delete user route
+app.delete('api/v1/accounts/:account-number',(req,res)=>{
+
+let acc = parseInt(req.params.account-number);
+
+  let admin = new Admin();
+ let found =  admin.deleteAcc(acc,session.account);
+ if (!found) return res.status(400).json({status:400, msg: "error in deletion"});
+
+ res.status(200).json({status:200, msg:"account delete successfully"});
+
+});
+
 //Set environment Port
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

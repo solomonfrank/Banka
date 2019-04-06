@@ -57,6 +57,7 @@ app.post('/api/v1/create-account',(req,res) =>{
     let type = req.body.type;
 
     const person = new Account(firstName,lastName,email,type,openingBalance);
+    person.save();
 
   }
 

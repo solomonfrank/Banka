@@ -1,11 +1,13 @@
 const express = require('express');
 const path = require('path');
+const uuid = require('uuid');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 const User = require('./user');
 const session = require('express-session');
 
-
+console.log(jwt.token);
 // body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));

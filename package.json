@@ -19,6 +19,8 @@
   "dependencies": {
     "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "sessionstorage": "^0.1.0"
+    "jsonwebtoken": "^8.5.1",
+    "sessionstorage": "^0.1.0",
+    "uuid": "^3.3.2"
   }
 }

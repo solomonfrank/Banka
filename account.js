@@ -1,10 +1,11 @@
 const User = require('./user')
 const uuid = require('uuid');  //uuid.v4
 
-let accDb = [];
+session.account =[];
+let accDb = session.account;
 
 
-let accountCounter = 0;
+let accountCounter = 1;
 class Account{
     constructor(firstName,lastName,email,type,openingBalance = 0){
         this._firstName = firstName;
@@ -14,8 +15,8 @@ class Account{
         this._openingBalance = openingBalance;
         this._balance = this._openingBalance;
         this._id = accountCounter;
-        this._status = 'dormant'
-        accountCounter ++;
+        this._status = 'dormant';
+        accountCounter  = accountCounter + 1;
         this._accountNumber = Math.floor((1 + Math.random()) * 1000000 );
 
     }
@@ -80,7 +81,7 @@ class Account{
         let type = this.getType();
         let accNumber = this.getAccountNumber();
 
-    let user1 = {
+    let user = {
         first,
         last,
         email,
@@ -89,8 +90,28 @@ class Account{
         accNumber
 
     }
-   return  accDb.push(user1);
-   localStorage.setItem('AccArray',JSON.stringify(accDb));
+  // return  accDb.push(user1);
+  if(!session.users){
+    session.users = [];
+ 
+}
+let lastInsert;
+if(session.account.push(user)){
+    lastInsert = {
+     
+     id :this._id,
+     email,
+     first,
+     last,
+     userId: session.userId
+  }
+  return lastInsert;
+}else{
+    lastInsert = false;
+    return lastInsert;
+};
+
+
   }
 
  static  debitAcc(acc,accData,admin){

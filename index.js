@@ -5,12 +5,12 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 const User = require('./user');
-const session = require('express-session');
 
-//console.log(jwt.token);
-jwt.sign({ foo: 'bar' }, 'privateKey', { algorithm: 'RS256' }, function(err, token) {
-  console.log(jwt);
-});
+const session = require('express-session');
+const Account = require('./account');
+
+
+
 // body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -50,7 +50,25 @@ app.post('/api/v1/sign-in',(req,res) =>{
     if(!user) return res.status(400).json({status:400,msg:"invalid credential"});
   
     res.status(200).json({status:200, data : user});
-})
+});
+
+app.post('/api/v1/create-account',(req,res) =>{
+   
+  if(session.loggedIn){
+    let email= req.body.email;
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let openingBalance = req.body.openingBalance;
+    let type = req.body.type;
+
+    const person = new Account(firstName,lastName,email,type,openingBalance);
+    person.save();
+
+  }
+
+
+
+});
 
 //Set environment Port
 let PORT = process.env.PORT || 5000;

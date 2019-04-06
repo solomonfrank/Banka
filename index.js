@@ -47,6 +47,7 @@ app.post('/api/v1/sign-in',(req,res) =>{
     res.status(200).json({status:200, data : user});
 });
 
+
 app.post('/api/v1/create-account',(req,res) =>{
    
   if(session.loggedIn){
@@ -57,12 +58,22 @@ app.post('/api/v1/create-account',(req,res) =>{
     let type = req.body.type;
 
     const person = new Account(firstName,lastName,email,type,openingBalance);
-    person.save();
+    let user = person.save();
+    res.status(200).json(user);
 
+  }else{
+    res.status(400).json({status:400,msg:"your must login to create an account"});
   }
 
 
 
+});
+
+app.get('/api/v1/logout',(req, res)=>{
+
+
+  User.logout();
+  res.json({msg : 'you have successfully sign out'});
 });
 
 //Set environment Port

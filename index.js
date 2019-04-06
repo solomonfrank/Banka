@@ -7,7 +7,10 @@ const app = express();
 const User = require('./user');
 const session = require('express-session');
 
-console.log(jwt.token);
+//console.log(jwt.token);
+jwt.sign({ foo: 'bar' }, 'privateKey', { algorithm: 'RS256' }, function(err, token) {
+  console.log(jwt);
+});
 // body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));

@@ -1,6 +1,7 @@
 
 const session = require('express-session');
 const sessionStorage = require('sessionstorage');
+const jwt = require('jsonwebtoken');
 
 
 let counter = 1;
@@ -122,6 +123,7 @@ save(){
    let lastInsert;
    if(session.users.push(users)){
        lastInsert = {
+        
         id :this._id,
         email,
         first,
@@ -148,6 +150,7 @@ save(){
        
       //this._loggedIn = true;
       found.isLoggedIn = true;
+      session.loggedIn =true
       return found;
       
 

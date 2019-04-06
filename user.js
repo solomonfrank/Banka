@@ -191,14 +191,7 @@ save(){
     sessionStorage.setItem('item', str);
 }
 
-static getSave(){
- let str = sessionStorage.getItem('item');
- usersData = JSON.parse(str);
- if(!usersData){
-   return  usersData = [];
- }
- return usersData;
-}
+
  
 }
 

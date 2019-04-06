@@ -1,11 +1,11 @@
 
 const session = require('express-session');
-const sessionStorage = require('sessionstorage');
+//const sessionStorage = require('sessionstorage');
 const jwt = require('jsonwebtoken');
 
 
 let counter = 1;
-console.log(counter);
+
   session.users = [];
   let usersData = session.users;
 
@@ -28,10 +28,10 @@ class User{  //generic user class
         
         
         this._id = counter; // user id to keep track of users
-        console.log(counter);
+       
       
-        counter ++ ;
-       console.log(counter);
+        counter = counter + 1 ;
+     
     }
    
 
@@ -112,10 +112,7 @@ save(){
         isAdmin
        
     }
-   //usersData.push(users);
-
-   //this.saveStorage();
-   //this.saveSession(users)
+  
    if(!session.users){
        session.users = [];
     
@@ -156,43 +153,10 @@ save(){
 
   }
 
-  saveSession(users){
-   
-    session.users.push(users);
-    session.users =usersData;
-}
-
-  static sessionSave(){
-  
-
-    session.users = usersData;
-   }
-   
-   static getSession(){
-       return session.users;
-   }
-   
-   static setSession(){
-         
-       
-       if(usersData.length === 0) return usersData = [];
-       
-      return  usersData = User.session.users;
-      
-       
-   }
-
   static logout(){
       this._loggedIn = false;
   }
 
-  saveStorage(){
-    let str = JSON.stringify(usersData);
-    sessionStorage.setItem('item', str);
-}
-
-
- 
 }
 
 //console.log(usersData);

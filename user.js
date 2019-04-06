@@ -158,6 +158,8 @@ save(){
 
   static logout(){
       this._loggedIn = false;
+     session.userId = '';
+      session.loggedIn = false;
   }
 
 }

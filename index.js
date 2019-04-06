@@ -73,6 +73,13 @@ app.post('/api/v1/create-account',(req,res) =>{
 
 });
 
+app.get('/api/v1/logout',(res, req)=>{
+
+
+  User.logout();
+  res.json({msg : 'you have successfully sign out'});
+});
+
 //Set environment Port
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

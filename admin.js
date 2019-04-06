@@ -1,4 +1,6 @@
 const User = require('./user');
+const session = require('express-session');
+let accDb = session.account;
 
 class Admin extends User{
     
@@ -9,12 +11,19 @@ class Admin extends User{
      staff.save();
     }
 
-    deleteAcc(acc,array){
-
-    let found =accDb.filter(user => user.accNumber !== acc)
-      
-     if (!found) return false;
-     return found;
+    deleteAcc(acc, accArray){
+       
+    let found = accArray.indexOf(acc)
+    if(found === -1){
+        return false;
+    }else{
+        let found = accArray.filter(user => user.accNumber !== acc);
+        return found;
+    }
+   
+      //console.log(found)
+    
+    
     }
 
     selectStaff(){

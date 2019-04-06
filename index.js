@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const uuid = require('uuid');
 const jwt = require('jsonwebtoken');
+const Admin = require('./admin');
+//const fs = require('fs');
+const usersArr = require('./database');
 
 const app = express();
 const User = require('./user');
@@ -10,7 +13,8 @@ const session = require('express-session');
 const Account = require('./account');
 
 
-
+session.account =[];
+let accDb = session.account;
 // body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -83,15 +87,22 @@ app.get('/api/v1/logout',(req, res)=>{
 
 
 //delete user route
-app.delete('api/v1/accounts/:account-number',(req,res)=>{
+app.delete('/api/v1/accounts/:accountNumber',(req, res)=>{
+let acc = parseInt(req.params.accountNumber);
 
-let acc = parseInt(req.params.account-number);
 
-  let admin = new Admin();
- let found =  admin.deleteAcc(acc,session.account);
- if (!found) return res.status(400).json({status:400, msg: "error in deletion"});
+ let admin = new Admin();
+ let foundvalue =  admin.deleteAcc(acc,session.account);
+ 
 
- res.status(200).json({status:200, msg:"account delete successfully"});
+ if (!foundvalue) {
+   res.status(400).json({status:400, msg: "error in deletion"});
+  }
+ else{
+  res.status(200).json({status:200, msg:"account delete successfully"});
+ }
+
+ 
 
 });
 

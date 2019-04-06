@@ -2,6 +2,8 @@
 const session = require('express-session');
 //const sessionStorage = require('sessionstorage');
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
+let usersArr = require('./database');
 
 
 let counter = 1;
@@ -112,11 +114,17 @@ save(){
         isAdmin
        
     }
+
+   
   
-   if(!session.users){
+  if(!session.users){
        session.users = [];
     
-   }
+  }
+ /* if (usersArr.length === 0){
+      usersArr = [];
+  }
+  */
    let lastInsert;
    if(session.users.push(users)){
        lastInsert = {
@@ -126,6 +134,7 @@ save(){
         first,
         last
      }
+    
      return lastInsert;
    }else{
        lastInsert = false;

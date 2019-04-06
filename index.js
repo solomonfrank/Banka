@@ -78,15 +78,16 @@ app.get('/api/v1/logout',(req, res)=>{
 
 //delete user route
 app.delete('api/v1/accounts/:account-number',(req,res)=>{
-
-let acc = parseInt(req.params.account-number);
-
+  let acc = parseInt(req.params.accountNumber);
   let admin = new Admin();
- let found =  admin.deleteAcc(acc,session.account);
- if (!found) return res.status(400).json({status:400, msg: "error in deletion"});
-
- res.status(200).json({status:200, msg:"account delete successfully"});
-
+  let foundvalue =  admin.deleteAcc(acc,session.account);
+  
+  if (!foundvalue) {
+    res.status(400).json({status:400, msg: "error in deletion"});
+   }
+  else{
+   res.status(200).json({status:200, msg:"account delete successfully"});
+  }
 });
 
 //Set environment Port

@@ -148,6 +148,7 @@ save(){
       //this._loggedIn = true;
       found.isLoggedIn = true;
       session.loggedIn =true;
+      session.userId  =  found.id;
       return found;
       
 

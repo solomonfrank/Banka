@@ -63,8 +63,10 @@ app.post('/api/v1/create-account',(req,res) =>{
 
     const person = new Account(firstName,lastName,email,type,openingBalance);
     let user = person.save();
-    res.json(user);
+    res.status(200).json(user);
 
+  }else{
+    res.status(400).json({status:400,msg:"your must login to create an account"});
   }
 
 

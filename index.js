@@ -73,7 +73,7 @@ app.post('/api/v1/create-account',(req,res) =>{
 
 });
 
-app.get('/api/v1/logout',(res, req)=>{
+app.get('/api/v1/logout',(req, res)=>{
 
 
   User.logout();

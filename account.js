@@ -104,7 +104,8 @@ if(session.account.push(user)){
      email,
      first,
      last,
-     userId: session.userId
+     userId: session.userId,
+     accNumber
   }
   return lastInsert;
 }else{
@@ -120,11 +121,5 @@ if(session.account.push(user)){
   }
 } 
 
-//const p = new Account('solo','rock','solo@yahoo.com','saving','7777');
-//const y = new Account('solo1','rock','solo@yahoo.com','saving','7777');
-//p.save();
-//y.save();
-
-//console.log(accDb);
 
 module.exports = Account;

@@ -1,11 +1,14 @@
-let counter =1;
+
+const session = require('express-session');
+//const sessionStorage = require('sessionstorage');
+const jwt = require('jsonwebtoken');
 
 
+let counter = 1;
 
-  session.users = [
-    
-  ];
+  session.users = [];
   let usersData = session.users;
+
 
  let accDb = [];
 let accountCounter = 0;
@@ -25,7 +28,10 @@ class User{  //generic user class
         
         
         this._id = counter; // user id to keep track of users
-        counter ++;
+       
+      
+        counter = counter + 1 ;
+     
     }
    
 
@@ -75,9 +81,15 @@ class User{  //generic user class
         this.isAdmin =true;
     }
 
+    getId(){
+        return this._id;
+    }
+
    static getLoggedIn(){
        return this._loggedIn;
    }
+
+
 
 save(){
 
@@ -87,10 +99,11 @@ save(){
     let password = this.getPassword();
     let type = this.getType();
     let isAdmin = this.getIsAdmin();
+    let id = this.getId();
 
 
   let  users = {
-        id : this._id,
+        id,
         email,
         first,
         last,
@@ -99,62 +112,42 @@ save(){
         isAdmin
        
     }
-   //usersData.push(users);
-   session.users.push(users);
-  // this.saveStorage();
-
- 
- 
-     return {
-        id : this.id,
+  
+   if(!session.users){
+       session.users = [];
+    
+   }
+   let lastInsert;
+   if(session.users.push(users)){
+       lastInsert = {
+        
+        id :this._id,
         email,
         first,
         last
      }
-}
-static saveSession(users){
-    session.users.push(users);
-}
-
-
- saveStorage(){
-    let str = JSON.stringify(usersData);
-    sessionStorage.setItem('item', str);
-}
-
-static getSave(){
- let str = sessionStorage.getItem('item');
- usersData = JSON.parse(str);
- if(!usersData){
-   return  usersData = [];
- }
- return usersData;
-}
-static sessionSave(){
+     return lastInsert;
+   }else{
+       lastInsert = false;
+       return lastInsert;
+   };
    
-    session.users = usersData;
-   }
-   
-   static getSession(){
-       return session.users;
-   }
-   
-   static setSession(){
-         
-       
-       if(usersData.length === 0) return usersData = [];
-       
-      return  usersData = User.session.users;
-      
-       
-   }
+
+  
+
+ 
+ 
+     
+}
 
   static login(email,password){
       let found = usersData.find(user => (user.email === email && user.password === password));
       
-      if(!found) return {msg : "invalid credential"};
+      if(!found) return false;
        
-      this._loggedIn = true;
+      //this._loggedIn = true;
+      found.isLoggedIn = true;
+      session.loggedIn =true;
       return found;
       
 
@@ -163,9 +156,11 @@ static sessionSave(){
   static logout(){
       this._loggedIn = false;
   }
+
 }
 
-
+//console.log(usersData);
 
 
 module.exports = User;
+

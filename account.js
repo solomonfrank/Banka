@@ -1,4 +1,5 @@
 const User = require('./user')
+const session = require('express-session');
 //const uuid = require('uuid');  //uuid.v4
 
 session.account =[];

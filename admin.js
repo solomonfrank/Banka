@@ -11,9 +11,10 @@ class Admin extends User{
 
     deleteAcc(acc,array){
 
-    let found =accDb.filter(acc => acc.accNumber !== acc && acc.status==='dormant')
+    let found =accDb.filter(user => user.accNumber !== acc)
       
-     if (found) return found;
+     if (!found) return false;
+     return found;
     }
 
     selectStaff(){

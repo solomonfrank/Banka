@@ -81,6 +81,7 @@ class Account{
         let Balance = this.getBalance();
         let type = this.getType();
         let accNumber = this.getAccountNumber();
+        let status =this.getStatus();
 
     let user = {
         first,
@@ -88,7 +89,8 @@ class Account{
         email,
         Balance,
         type,
-        accNumber
+        accNumber,
+        status
 
     }
   // return  accDb.push(user1);
@@ -104,8 +106,11 @@ if(session.account.push(user)){
      email,
      first,
      last,
-     userId: session.userId,
-     accNumber
+     userId: session.userId || session.staffId || session.cashierId,
+     accNumber,
+     Balance,
+     status
+
   }
   return lastInsert;
 }else{

@@ -2,6 +2,8 @@
 
 const User = require('./user');
 const cashier = require('./cashier');
+const session = require('express-session');
+
 
 class Cashier extends User{
 
@@ -13,7 +15,7 @@ class Cashier extends User{
               transactionId: Math.floor(Math.random() * 1000000),
               accountNumber : accNum,
               amount: amount,
-              cashier: cashier.id,
+              cashier: cashier,
               transactionType:debit,
               accountBalance: `${found.balance - amount}`
 
@@ -22,20 +24,22 @@ class Cashier extends User{
     }
 
     credit(accNum,accData,cashier,amount){
-      let found  =  accData.find( acc => acc.item === accNum);
+      console.log(accData);
+      let found  =  accData.find( acc => acc.accNumber === accNum);
+      console.log(found);
+      
       if(!found) return false;
 
+      found.Balance = found.Balance + amount;
       return {
+        ...found,
+        cashier,
+        transactionType : 'credit',
+        transactionId : Math.floor(Math.random() * 1000000)
 
-       transactionId:`${Math.floor(Math.random() * 1000000)}`,
-       accountNumber : accNum,
-       amount: amount,
-       cashier: cashier,
-       transactionType:credit,
-       accountBalance: `${found.balance + amount}`
-
-      };
+      }
     }
 }
 
-module.exports = Staff;
+module.exports = Cashier;
+

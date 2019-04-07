@@ -190,7 +190,26 @@ if(session.cashierId){
 }
 });
 
+<<<<<<< HEAD
 
+=======
+// debit account
+app.post('/api/v1/transaction/:accountNumber/debit',(req,res)=>{
+  if(session.cashierId){
+      let accNum = parseInt(req.params.accountNumber);
+      let amount = req.body.amount;
+  
+      let cashier = new Cashier();
+    let credited =  cashier.debit(accNum,session.account,session.cashierId,amount);
+    console.log(credited);
+    if(!credited) return res.status(404).json({status:404, msg : "account not found"});
+     res.status(200).json({status:200, data : credited});
+  }else{
+    
+    return res.status(403).json({status:403,msg:"you must login to accessible the page"})
+  }
+  });
+>>>>>>> develop
 //Set environment Port
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -119,7 +119,7 @@ app.delete('/api/v1/accounts/:accountNumber',(req, res)=>{
 app.get('/api/v1/accounts/:accountNumber',(req,res)=>{
 
 if(session.staffId || session.cashierId){
-  let acc = parseInt(req.params.accountNumber);
+  let acc = parseInt(req.parfuams.accountNumber);
   let admin = new Admin();
   let account = admin.findOne(acc,session.account);
   if(!account) return res.status(400).json({status:400,msg:"account not found"});

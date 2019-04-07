@@ -1,5 +1,6 @@
 
 const User = require('./user');
+const cashier = require('./cashier');
 
 
 class Cashier extends User{

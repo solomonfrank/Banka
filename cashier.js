@@ -1,3 +1,6 @@
+const User = require('./user');
+const Admin = require('./admin');
+
 class Cashier extends User{
 
     debitAcc(accNum,accData,cashier,amount){

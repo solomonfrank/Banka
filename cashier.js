@@ -13,7 +13,8 @@ class Cashier extends User{
       console.log(found);
       
       if(!found) return false;
-    if(found.Balance < amount){
+    
+      if(found.Balance < amount){
       found.Balance = found.Balance;
     }else{
       found.Balance = found.Balance - amount;

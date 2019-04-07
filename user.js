@@ -163,6 +163,9 @@ save(){
 
   static logout(){
       this._loggedIn = false;
+      if(session.userId) session.userId = '';
+      if(session.staffId) session.userId = '';
+      if(session.cashierId) session.userId = '';
   }
 
 }

@@ -61,6 +61,11 @@ class Admin extends User{
        
 
     }
+    findAll(){
+        if(!session.account) return false;
+
+        return session.account;
+    }
 }
 
 

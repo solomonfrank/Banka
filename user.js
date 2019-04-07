@@ -2,8 +2,6 @@
 const session = require('express-session');
 //const sessionStorage = require('sessionstorage');
 const jwt = require('jsonwebtoken');
-const fs = require('fs');
-let usersArr = require('./database');
 
 
 let counter = 1;
@@ -114,17 +112,11 @@ save(){
         isAdmin
        
     }
-
-   
   
-  if(!session.users){
+   if(!session.users){
        session.users = [];
     
-  }
- /* if (usersArr.length === 0){
-      usersArr = [];
-  }
-  */
+   }
    let lastInsert;
    if(session.users.push(users)){
        lastInsert = {
@@ -134,7 +126,6 @@ save(){
         first,
         last
      }
-    
      return lastInsert;
    }else{
        lastInsert = false;
@@ -156,10 +147,15 @@ save(){
        
       //this._loggedIn = true;
       found.isLoggedIn = true;
-
       session.loggedIn =true;
-      session.userId  =  found.id;
-
+      if(found.type === 'staff'){
+        session.staffId  =  found.id;
+      }else if(found.type === 'cashier'){
+          session.cashierId = found.id;
+      }else{
+          session.userId = found.id;
+      }
+     
       return found;
       
 
@@ -167,8 +163,6 @@ save(){
 
   static logout(){
       this._loggedIn = false;
-     session.userId = '';
-      session.loggedIn = false;
   }
 
 }

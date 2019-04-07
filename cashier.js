@@ -3,18 +3,21 @@ const Admin = require('./admin');
 
 class Cashier extends User{
 
-    debitAcc(accNum,accData,cashier,amount){
- let found  =  accData.find( acc => acc.item === accNum);
-             return {
+    debit(accNum,accData,cashier,amount){
+      let found  =  accData.find( acc => acc.accNumber === accNum);
+      console.log(found);
+      
+      if(!found) return false;
 
-              transactionId: Math.floor(Math.random() * 1000000),
-              accountNumber : accNum,
-              amount: amount,
-              cashier: cashier.id,
-              transactionType:debit,
-              accountBalance: `${found.balance - amount}`
+      found.Balance = found.Balance - amount;
+      return {
+        ...found,
+        cashier,
+        transactionType : 'debit',
+        transactionId : Math.floor(Math.random() * 1000000)
 
-             };
+      }
+             
 
     }
 

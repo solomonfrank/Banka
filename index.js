@@ -79,15 +79,23 @@ app.get('/api/v1/logout',(req, res)=>{
 
 //delete user route
 app.delete('api/v1/accounts/:account-number',(req,res)=>{
-  let acc = parseInt(req.params.accountNumber);
-  let admin = new Admin();
-  let foundvalue =  admin.deleteAcc(acc,session.account);
-  
-  if (!foundvalue) {
-    res.status(400).json({status:400, msg: "error in deletion"});
-   }
-  else{
-   res.status(200).json({status:200, msg:"account delete successfully"});
+  if(session.staffId){
+    let acc = parseInt(req.params.accountNumber);
+
+
+    let admin = new Admin();
+    let foundvalue =  admin.deleteAcc(acc,session.account);
+    
+   
+    if (!foundvalue) {
+     return res.status(400).json({status:400, msg: "account not found"});
+     }
+    
+     res.status(200).json({status:200, msg:"account delete successfully"});
+    
+    
+  }else{
+    res.status(401).json({status:401, msg:'you must login to continue'});
   }
 });
 
@@ -130,9 +138,13 @@ let email = req.body.email;
 let lastName = req.body.lastName;
 let type = req.body.type;
 let password = req.body.password;
-let isAdmin = req.body.isAdmin
-let admin  = new Superadmin(firstName,lastName,password,email,type = type,isAdmin = isAdmin );
-    admin.addStaff();
+let isAdmin = req.body.isAdmin;
+let lastInserted =   Superadmin.addStaff(firstName,lastName,password,email,type = type,isAdmin = isAdmin );
+if(!lastInserted){
+    res.status(400).json({msg:"user could not added"});
+}
+   
+res.status(200).json({status:200, data: lastInserted});
      
 });
 

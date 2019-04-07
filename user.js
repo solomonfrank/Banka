@@ -148,7 +148,14 @@ save(){
       //this._loggedIn = true;
       found.isLoggedIn = true;
       session.loggedIn =true;
-      session.userId  =  found.id;
+      if(found.type === 'staff'){
+        session.staffId  =  found.id;
+      }else if(found.type === 'cashier'){
+          session.cashierId = found.id;
+      }else{
+          session.userId = found.id;
+      }
+     
       return found;
       
 

@@ -90,6 +90,38 @@ app.delete('api/v1/accounts/:account-number',(req,res)=>{
   }
 });
 
+//fetch user
+app.get('/api/v1/accounts/:accountNumber',(req,res)=>{
+
+if(session.staffId || session.cashierId){
+  let acc = parseInt(req.params.accountNumber);
+  let admin = new Admin();
+  let account = admin.findOne(acc,session.account);
+  if(!account) res.status(400).json({status:400,msg:"account not found"});
+  res.status(200).json({status:200, data:account});
+}else{
+  //User.login(email,password);
+  res.status(401).json({status:401, msg:'you must login to continue'});
+}
+});
+// patch user
+app.patch('/api/v1/accounts/:accountNumber',(req,res)=>{
+  let acc = parseInt(req.params.accountNumber);
+ if(session.staffId){
+  let admin = new Admin();
+let arr = admin.activate(acc,session.account);
+if(!arr) return res.status(400).json({status:400,msg: 'account not found'});
+
+res.status(200).status({status:200, data:arr});
+ 
+}else{
+   //User.login(email,password);
+   res.status(401).json({status:401, msg:'you must login to continue'});
+ }
+  
+
+});
+
 //Set environment Port
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

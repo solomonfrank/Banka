@@ -91,7 +91,7 @@ class Account{
 
     }
   // return  accDb.push(user1);
-  if(!session.users){
+  if(!session.account){
     session.account = [];
  
 }

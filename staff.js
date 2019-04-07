@@ -1,4 +1,4 @@
-class staff extends User{
+class Cashier extends User{
 
     debitAcc(accNum,accData,cashier,amount){
  let found  =  accData.find( acc => acc.item === accNum);

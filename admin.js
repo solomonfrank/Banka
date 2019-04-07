@@ -9,14 +9,26 @@ class Admin extends User{
 
 
     deleteAcc(acc, accArray){
-
-    let found = accArray.indexOf(acc)
-    if(found === -1){
+        console.log(accArray);
+        let found = accArray.find(user => (user.accNumber === acc));
+    //let found = accArray.indexOf(acc)
+  /* if(found === -1){
         return false;
     }else{
         let found = accArray.filter(user => user.accNumber !== acc);
         return found;
     }
+    
+    */
+   if(!found){
+       return false;
+   }else{
+    //return accArray.filter(user => user.accNumber !== acc);
+   let index =  accArray.indexOf(found)
+    return accArray.splice(index,1);
+   }
+      
+   
    
     }
 
@@ -41,13 +53,12 @@ class Admin extends User{
     }
 
     findOne(acc,accArray){
-        let found = accArray.indexOf(acc)
-        if( found === -1){
-            return false
-        }else{
-         let found =    accArray.find(user => user.accNumber === acc);
-         return found;
-        }
+      let  result =    accArray.find(user => user.accNumber === acc);
+
+      if(!result) return false;
+
+      return result;
+       
 
     }
 }

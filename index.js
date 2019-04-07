@@ -12,6 +12,7 @@ const User = require('./user');
 const session = require('express-session');
 const Account = require('./account');
 const Superadmin = require('./superadmin');
+const Cashier = require('./cashier');
 
 
 session.account =[];
@@ -120,7 +121,7 @@ app.delete('/api/v1/accounts/:accountNumber',(req, res)=>{
 app.get('/api/v1/accounts/:accountNumber',(req,res)=>{
 
 if(session.staffId || session.cashierId){
-  let acc = parseInt(req.parfuams.accountNumber);
+  let acc = parseInt(req.params.accountNumber);
   let admin = new Admin();
   let account = admin.findOne(acc,session.account);
   if(!account) return res.status(400).json({status:400,msg:"account not found"});
@@ -173,13 +174,14 @@ let isAdmin = req.body.isAdmin;
 
 
 //credit account
-app.post('api/v1/transaction/:accountNumber/credit',(req,res)=>{
+app.post('/api/v1/transaction/:accountNumber/credit',(req,res)=>{
 if(session.cashierId){
-    let accNum = parseInt(req,params.accountNumber);
+    let accNum = parseInt(req.params.accountNumber);
     let amount = req.body.amount;
 
     let cashier = new Cashier();
   let credited =  cashier.credit(accNum,session.account,session.cashierId,amount);
+  console.log(credited);
   if(!credited) return res.status(404).json({status:404, msg : "account not found"});
    res.status(200).json({status:200, data : credited});
 }else{

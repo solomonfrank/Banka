@@ -185,12 +185,16 @@ app.post('/api/v1/transaction/:accountNumber/debit',(req,res)=>{
   //fetch all account
 
   app.get('/api/v1/accounts', (req, res)=>{
-
+   if(session.staffId){
     const admin = new Admin();
     let result = admin.findAll();
     if(!result) return res.status(404).json({status:404,msg : "result not found"});
 
     res.status(200).json({status:200,data : result});
+   }else{
+     return res.status(400).json({status:400,msg : 'you must login'})
+   }
+ 
   });
 //Set environment Port
 let PORT = process.env.PORT || 5000;

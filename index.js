@@ -39,7 +39,7 @@ app.post('/api/v1/sign-up',(req,res) =>{
  //user.save();
   if(!userDetail) return res.status(400).json({status:400, msg:"error in the values your submitted"})
   res.status(200).json({status:200, data : userDetail});
-  console.log(session.users);
+  //console.log(session.users);
     
 
 });
@@ -73,12 +73,14 @@ app.post('/api/v1/create-account',(req,res) =>{
 
   }else{
     res.status(400).json({status:400,msg:"your must login to create an account"});
-  }
+  }  
+  //console.log(session.account);
 
 
 
 });
 
+// logout route
 app.get('/api/v1/logout',(req, res)=>{
 
 
@@ -90,19 +92,25 @@ app.get('/api/v1/logout',(req, res)=>{
 //delete user route
 
 app.delete('/api/v1/accounts/:accountNumber',(req, res)=>{
-let acc = parseInt(req.params.accountNumber);
+  if(session.staffId){
+    let acc = parseInt(req.params.accountNumber);
 
 
- let admin = new Admin();
- let foundvalue =  admin.deleteAcc(acc,session.account);
- 
-
- if (!foundvalue) {
-   res.status(400).json({status:400, msg: "error in deletion"});
+    let admin = new Admin();
+    let foundvalue =  admin.deleteAcc(acc,session.account);
+    
+   
+    if (!foundvalue) {
+     return res.status(400).json({status:400, msg: "account not found"});
+     }
+    
+     res.status(200).json({status:200, msg:"account delete successfully"});
+    
+    
+  }else{
+    res.status(401).json({status:401, msg:'you must login to continue'});
   }
- else{
-  res.status(200).json({status:200, msg:"account delete successfully"});
- }
+
 
 });
 
@@ -114,7 +122,7 @@ if(session.staffId || session.cashierId){
   let acc = parseInt(req.params.accountNumber);
   let admin = new Admin();
   let account = admin.findOne(acc,session.account);
-  if(!account) res.status(400).json({status:400,msg:"account not found"});
+  if(!account) return res.status(400).json({status:400,msg:"account not found"});
   res.status(200).json({status:200, data:account});
 }else{
   //User.login(email,password);
@@ -126,14 +134,14 @@ app.patch('/api/v1/accounts/:accountNumber',(req,res)=>{
   let acc = parseInt(req.params.accountNumber);
  if(session.staffId){
   let admin = new Admin();
-let arr = admin.activate(acc,session.account);
+let arr = admin.activateAcc(acc,session.account);
 if(!arr) return res.status(400).json({status:400,msg: 'account not found'});
 
-res.status(200).status({status:200, data:arr});
+res.status(200).json({status:200, data:arr});
  
 }else{
    //User.login(email,password);
-   res.status(401).json({status:401, msg:'you must login to continue'});
+  return  res.status(401).json({status:401, msg:'you must login to continue'});
  }
   
 
@@ -141,21 +149,26 @@ res.status(200).status({status:200, data:arr});
 });
 
 
-<<<<<<< HEAD
-=======
+
 app.post('/api/v1/add-admin', (req,res)=>{
 let firstName = req.body.firstName;
 let email = req.body.email;
 let lastName = req.body.lastName;
 let type = req.body.type;
 let password = req.body.password;
-let isAdmin = req.body.isAdmin
-let admin  = new Superadmin(firstName,lastName,password,email,type = type,isAdmin = isAdmin );
-    admin.addStaff();
-     
+let isAdmin = req.body.isAdmin;
+//let admin = new Superadmin();
+
+ let lastInserted =   Superadmin.addStaff(firstName,lastName,password,email,type = type,isAdmin = isAdmin );
+ if(!lastInserted){
+     res.status(400).json({msg:"user could not added"});
+ }
+    
+ res.status(200).json({status:200, data: lastInserted});
+ //console.log(session.users);
 });
 
->>>>>>> develop
+
 //Set environment Port
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

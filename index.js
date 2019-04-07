@@ -92,6 +92,7 @@ app.get('/api/v1/logout',(req, res)=>{
 //delete user route
 
 app.delete('/api/v1/accounts/:accountNumber',(req, res)=>{
+
   if(session.staffId){
     let acc = parseInt(req.params.accountNumber);
 
@@ -149,7 +150,6 @@ res.status(200).json({status:200, data:arr});
 });
 
 
-
 app.post('/api/v1/add-admin', (req,res)=>{
 let firstName = req.body.firstName;
 let email = req.body.email;
@@ -157,6 +157,7 @@ let lastName = req.body.lastName;
 let type = req.body.type;
 let password = req.body.password;
 let isAdmin = req.body.isAdmin;
+
 //let admin = new Superadmin();
 
  let lastInserted =   Superadmin.addStaff(firstName,lastName,password,email,type = type,isAdmin = isAdmin );
@@ -166,6 +167,25 @@ let isAdmin = req.body.isAdmin;
     
  res.status(200).json({status:200, data: lastInserted});
  //console.log(session.users);
+});
+
+
+
+
+//credit account
+app.post('api/v1/transaction/:accountNumber/credit',(req,res)=>{
+if(session.cashierId){
+    let accNum = parseInt(req,params.accountNumber);
+    let amount = req.body.amount;
+
+    let cashier = new Cashier();
+  let credited =  cashier.credit(accNum,session.account,session.cashierId,amount);
+  if(!credited) return res.status(404).json({status:404, msg : "account not found"});
+   res.status(200).json({status:200, data : credited});
+}else{
+  
+  return res.status(403).json({status:403,msg:"you must login to accessible the page"})
+}
 });
 
 

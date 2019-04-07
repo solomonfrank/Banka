@@ -11,6 +11,7 @@ const User = require('./user');
 
 const session = require('express-session');
 const Account = require('./account');
+const Superadmin = require('./superadmin');
 
 
 session.account =[];
@@ -140,6 +141,21 @@ res.status(200).status({status:200, data:arr});
 });
 
 
+<<<<<<< HEAD
+=======
+app.post('/api/v1/add-admin', (req,res)=>{
+let firstName = req.body.firstName;
+let email = req.body.email;
+let lastName = req.body.lastName;
+let type = req.body.type;
+let password = req.body.password;
+let isAdmin = req.body.isAdmin
+let admin  = new Superadmin(firstName,lastName,password,email,type = type,isAdmin = isAdmin );
+    admin.addStaff();
+     
+});
+
+>>>>>>> develop
 //Set environment Port
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

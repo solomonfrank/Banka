@@ -190,9 +190,7 @@ if(session.cashierId){
 }
 });
 
-<<<<<<< HEAD
 
-=======
 // debit account
 app.post('/api/v1/transaction/:accountNumber/debit',(req,res)=>{
   if(session.cashierId){
@@ -209,7 +207,7 @@ app.post('/api/v1/transaction/:accountNumber/debit',(req,res)=>{
     return res.status(403).json({status:403,msg:"you must login to accessible the page"})
   }
   });
->>>>>>> develop
+
 //Set environment Port
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

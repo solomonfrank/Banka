@@ -121,9 +121,7 @@ if(session.account.push(user)){
 
   }
 
- static  debitAcc(acc,accData,admin){
 
-  }
 } 
 
 

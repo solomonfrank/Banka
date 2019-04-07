@@ -7,28 +7,18 @@ const session = require('express-session');
 
 class Cashier extends User{
 
-<<<<<<< HEAD
 
-    debitAcc(accNum,accData,cashier,amount){
- let found  =  accData.find( acc => acc.item === accNum);
-             return {
-
-              transactionId: Math.floor(Math.random() * 1000000),
-              accountNumber : accNum,
-              amount: amount,
-              cashier: cashier,
-              transactionType:debit,
-              accountBalance: `${found.balance - amount}`
-
-             };
-=======
     debit(accNum,accData,cashier,amount){
       let found  =  accData.find( acc => acc.accNumber === accNum);
       console.log(found);
       
       if(!found) return false;
-
+    if(found.Balance < amount){
+      found.Balance = found.Balance;
+    }else{
       found.Balance = found.Balance - amount;
+    }
+      
       return {
         ...found,
         cashier,
@@ -37,7 +27,7 @@ class Cashier extends User{
 
       }
              
->>>>>>> develop
+
 
     }
 

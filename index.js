@@ -181,6 +181,17 @@ app.post('/api/v1/transaction/:accountNumber/debit',(req,res)=>{
     return res.status(403).json({status:403,msg:"you must login to accessible the page"})
   }
   });
+
+  //fetch all account
+
+  app.get('/api/v1/accounts', (req, res)=>{
+
+    const admin = new Admin();
+    let result = admin.findAll();
+    if(!result) return res.status(404).json({status:404,msg : "result not found"});
+
+    res.status(200).json({status:200,data : result});
+  });
 //Set environment Port
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

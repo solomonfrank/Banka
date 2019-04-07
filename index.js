@@ -4,6 +4,7 @@ const path = require('path');
 const app = express();
 const User = require('./user');
 const Account = require('./account');
+const Superadmin = require('./superadmin');
 
 
 // body parser middleware
@@ -120,6 +121,19 @@ res.status(200).status({status:200, data:arr});
  }
   
 
+});
+
+
+app.post('/api/v1/add-admin', (req,res)=>{
+let firstName = req.body.firstName;
+let email = req.body.email;
+let lastName = req.body.lastName;
+let type = req.body.type;
+let password = req.body.password;
+let isAdmin = req.body.isAdmin
+let admin  = new Superadmin(firstName,lastName,password,email,type = type,isAdmin = isAdmin );
+    admin.addStaff();
+     
 });
 
 //Set environment Port

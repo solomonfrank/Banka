@@ -1,5 +1,13 @@
 
-class Admin extends User{
+class Superadmin extends Admin{
+    
+
+
+    addStaff (firstName,lastName,password,email,type,isAdmin){
+     let staff =   new User( firstName,lastName,password,email,type = type,isAdmin = isAdmin );
+     staff.save();
+    }
+
     deleteAcc(acc,accArray){
       
     let found = accArray.indexOf(acc)
@@ -45,3 +53,4 @@ class Admin extends User{
 }
 
 
+module.exports = Superadmin;

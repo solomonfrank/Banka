@@ -1,11 +1,13 @@
-
+const User = require('./user');
+const Admin = require('./admin');
 class Superadmin extends Admin{
     
 
 
-    addStaff (firstName,lastName,password,email,type,isAdmin){
+    static addStaff (firstName,lastName,password,email,type,isAdmin){
      let staff =   new User( firstName,lastName,password,email,type = type,isAdmin = isAdmin );
-     staff.save();
+    let lastInserted =  staff.save();
+    return lastInserted;
     }
 
     deleteAcc(acc,accArray){

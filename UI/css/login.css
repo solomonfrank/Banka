@@ -26,11 +26,11 @@ body{
 	
 .head-container{
 	
-	 background-image:url("../img/img7.jpg"); 
+	 background-image:url("../img/img9.jpg"); 
 	background-repeat: no-repeat;
     opacity: 1;
 	 background-color: #cccccc; /* Used if the image is unavailable */
-  height: 100vh; /* You must set a specified height */
+  height: 100%vh; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: G7-repeat; /* Do not repeat the image */
   background-size: cover;
@@ -130,6 +130,9 @@ li a {
 }
 .open li {
 	margin-left:13px;
+}
+.open li:last-child{
+	margin-right:27px;
 }
 .other-pack{
 	margin-left:30%;
@@ -285,6 +288,114 @@ font:15px 1.5 arial san serif
 /* Extra small devices (phones, 600px and down) */
 
 @media screen and (max-width:600px){
+    .form-wrapper{
+	
+        margin-top:150px;
+       
+      
+        padding:0;
+    
+    }
+   
+    #form1{
+	
+				padding:12px;
+				margin-bottom:80px;
+    }
+    .form-container{
+        background-color: rgba(255,255,255,0.5);
+       border: 1px solid rgba(0,0,0,.1);
+      
+      margin-top:-50px;
+      margin-left:0px;
+       padding:0;
+       
+       
+		}
+		.login-title{
+			text-align:center;
+			padding:20px;
+		}
+		
+		
+		
+		
+		
+		input{
+			width:90%;
+			
+				padding:15px;
+				border:1px solid rgb(76, 38, 34);
+				border-radius:3px;
+			
+			
+		}
+		.form-label{
+			font-size:19px;
+			font-weight: bold;
+		}
+		input[type="checkbox"]{
+			
+			width: 30px;
+		margin-left:-10px;
+		}
+		
+		.remember-key{
+			color:rgb(76, 38, 34);
+			font-size:19px;
+		}
+		.form-input{
+			margin: 10px 0px;
+			
+		}
+		.form-title-alias{
+			text-align:center;
+			font-size:17px;
+			color:rgb(76, 38, 34);
+		}
+		
+		
+		
+		
+		.login-title{
+			
+			color:rgb(76, 38, 34);
+			font-size:30px;
+		}
+		
+		button{
+			color:rgb(76, 38, 34);
+			
+				text-align:center;
+				padding:15px;
+				border-radius:5px;
+				font-size:22px;
+				line-height:0.5rem;
+				border:1px solid rgb(76, 38, 34);
+		}
+		.inner-form-wrap{
+			margin-bottom:50px;
+		}
+		.remember-wrapper a{
+		color:rgb(76, 38, 34);
+		margin-left:10px;
+		}
+		button:hover{
+			background-color: rgb(76, 38, 34);
+			color:white;
+		}
+		
+		.form-group:last-child{
+			margin-top:10px;
+			
+			
+			
+		}
+		
+		.remember-wrapper-signup{
+			float:right;
+		
+		}
 	 .side{
 		margin-top:35px;
 	}
@@ -410,7 +521,115 @@ figure{
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media screen and (min-width:600px){
 	
+	.form-wrapper{
 	
+		margin-top:150px;
+	 
+	
+		padding:0;
+
+}
+
+#form1{
+
+		padding:12px;
+		margin-bottom:80px;
+		margin-left:40px;
+}
+.form-container{
+		background-color: rgba(255,255,255,0.5);
+	 border: 1px solid rgba(0,0,0,.1);
+	
+	margin-top:-50px;
+	margin-left:0px;
+	 padding:0;
+	 
+	 
+}
+.login-title{
+	text-align:center;
+	padding:20px;
+}
+
+
+
+
+
+input{
+	width:90%;
+	
+		padding:15px;
+		border:1px solid rgb(76, 38, 34);
+		border-radius:3px;
+	
+	
+}
+.form-label{
+	font-size:19px;
+	font-weight: bold;
+}
+input[type="checkbox"]{
+	
+	width: 30px;
+margin-left:-10px;
+}
+
+.remember-key{
+	color:rgb(76, 38, 34);
+	font-size:19px;
+}
+.form-input{
+	margin: 10px 0px;
+	
+}
+.form-title-alias{
+	text-align:center;
+	font-size:17px;
+	color:rgb(76, 38, 34);
+}
+
+
+
+
+.login-title{
+	
+	color:rgb(76, 38, 34);
+	font-size:30px;
+}
+
+button{
+	color:rgb(76, 38, 34);
+	
+		text-align:center;
+		padding:15px;
+		border-radius:5px;
+		font-size:22px;
+		line-height:0.5rem;
+		border:1px solid rgb(76, 38, 34);
+}
+.inner-form-wrap{
+	margin-bottom:50px;
+}
+.remember-wrapper a{
+color:rgb(76, 38, 34);
+margin-left:10px;
+}
+button:hover{
+	background-color: rgb(76, 38, 34);
+	color:white;
+}
+
+.form-group:last-child{
+	margin-top:10px;
+	
+	
+	
+}
+
+.remember-wrapper-signup{
+	float:right;
+
+}
 	.wrapper-ways-to-bank{
 	
 	padding:15px;
@@ -543,6 +762,114 @@ figure{
 /* Medium devices (landscape tablets, 768px and up) */
 @media screen and (min-width:768px){
 	
+	.form-wrapper{
+	
+		margin-top:150px;
+	 
+	
+		padding:0;
+
+}
+
+#form1{
+
+		padding:12px;
+		margin-bottom:80px;
+}
+.form-container{
+		background-color: rgba(255,255,255,0.5);
+	 border: 1px solid rgba(0,0,0,.1);
+	
+	margin-top:-50px;
+	margin-left:0px;
+	 padding:0;
+	 
+	 
+}
+.login-title{
+	text-align:center;
+	padding:20px;
+}
+
+
+
+
+
+input{
+	width:90%;
+	
+		padding:15px;
+		border:1px solid rgb(76, 38, 34);
+		border-radius:3px;
+	
+	
+}
+.form-label{
+	font-size:19px;
+	font-weight: bold;
+}
+input[type="checkbox"]{
+	
+	width: 30px;
+margin-left:-10px;
+}
+
+.remember-key{
+	color:rgb(76, 38, 34);
+	font-size:19px;
+}
+.form-input{
+	margin: 10px 0px;
+	
+}
+.form-title-alias{
+	text-align:center;
+	font-size:17px;
+	color:rgb(76, 38, 34);
+}
+
+
+
+
+.login-title{
+	
+	color:rgb(76, 38, 34);
+	font-size:30px;
+}
+
+button{
+	color:rgb(76, 38, 34);
+	
+		text-align:center;
+		padding:15px;
+		border-radius:5px;
+		font-size:22px;
+		line-height:0.5rem;
+		border:1px solid rgb(76, 38, 34);
+}
+.inner-form-wrap{
+	margin-bottom:50px;
+}
+.remember-wrapper a{
+color:rgb(76, 38, 34);
+margin-left:10px;
+}
+button:hover{
+	background-color: rgb(76, 38, 34);
+	color:white;
+}
+
+.form-group:last-child{
+	margin-top:10px;
+	
+	
+	
+}
+
+.remember-wrapper-signup{
+	float:right;
+
+}
 	.wrapper-ways-to-bank{
 	
 	padding:15px;
@@ -664,7 +991,116 @@ figure{
 
 /* Large devices (laptops/desktops, 990px and up) */
 @media screen and (min-width:990px){
+	.form-wrapper{
 	
+		margin-top:150px;
+	 
+	
+		padding:0;
+
+}
+
+#form1{
+
+		padding:12px;
+		margin-bottom:100px;
+		margin-left:450px;
+		margin-right:300px;
+}
+.form-container{
+		background-color: rgba(255,255,255,0.5);
+	 border: 1px solid rgba(0,0,0,.1);
+	
+	margin-top:-50px;
+	margin-left:0px;
+	 padding:0;
+	 
+	 
+}
+.login-title{
+	text-align:center;
+	padding:20px;
+}
+
+
+
+
+
+input{
+	width:70%;
+	
+		padding:15px;
+		border:1px solid rgb(76, 38, 34);
+		border-radius:3px;
+	
+	
+}
+.form-label{
+	font-size:19px;
+	font-weight: bold;
+}
+input[type="checkbox"]{
+	
+	width: 30px;
+margin-left:-10px;
+}
+
+.remember-key{
+	color:rgb(76, 38, 34);
+	font-size:19px;
+}
+.form-input{
+	margin: 10px 0px;
+	
+}
+.form-title-alias{
+	text-align:center;
+	font-size:17px;
+	color:rgb(76, 38, 34);
+}
+
+
+
+
+.login-title{
+	
+	color:rgb(76, 38, 34);
+	font-size:30px;
+}
+
+button{
+	color:rgb(76, 38, 34);
+	
+		text-align:center;
+		padding:15px;
+		border-radius:5px;
+		font-size:22px;
+		line-height:0.5rem;
+		border:1px solid rgb(76, 38, 34);
+}
+.inner-form-wrap{
+	margin-bottom:50px;
+}
+.remember-wrapper a{
+color:rgb(76, 38, 34);
+margin-left:10px;
+}
+button:hover{
+	background-color: rgb(76, 38, 34);
+	color:white;
+}
+
+.form-group:last-child{
+	margin-top:10px;
+	
+	
+	
+}
+
+.remember-wrapper-signup{
+	float:right;
+
+}
 	
 	
 	.top-nav-wrapper{
@@ -696,6 +1132,9 @@ figure{
 	}
 	.menu-list{
 		display:block;
+		margin-left:30px;
+		
+		
 	}
 	.icon{
 		display:none;
@@ -704,6 +1143,8 @@ figure{
 		
 		margin-top:-70px;
 	}
+
+	 
 	
 	figure img{
 	
@@ -717,97 +1158,7 @@ figure{
 
 /** form css -----------------   **/
 
-.login-title{
-	text-align:center;
-	padding:20px;
-}
-.user-selection{
-	
-	display:flex;
-	
-}
 
-.form-wrapper{
-	
-	margin:auto;
-
-}
-.form-container{
-	 background-color: white;
-    border: 1px solid rgba(0,0,0,.1);
-   
-    margin:40px;
-	padding:0;
-	
-	
-}
-
-input{
-	width:350px;
-	
-	padding:15px;
-	
-	
-}
-input[type="checkbox"]{
-	
-	width: 30px;
-margin-left:-10px;
-}
-
-.remember-key{
-	color:rgba(0,0,0,0.6);
-	font-size:19px;
-}
-.form-input{
-	margin: 10px 0px;
-	
-}
-.form-title-alias{
-	text-align:center;
-	font-size:15px;
-	color:gray;
-}
-
-
-#form1{
-	
-	padding:50px;
-}
-
-.login-title{
-	background-color:rgb(12, 29, 137);
-	color:white;
-	font-size:24px;
-}
-
-button{
-	color:white;
-		background-color:rgb(12, 29, 137);
-		text-align:center;
-		padding:15px;
-		border-radius:5px;
-		font-size:22px;
-		line-height:0.5rem;
-		border:1px solid gray;
-}
-
-.remember-wrapper a{
-color:rgb(12, 29, 137);
-margin-left:10px;
-}
-
-.form-group:last-child{
-	margin-top:10px;
-	
-	
-	
-}
-
-.remember-wrapper-sgnup{
-	float:right;
-
-}
 
 
 /*            dashboard CSS   */

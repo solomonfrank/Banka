@@ -7,25 +7,13 @@ import session from "express-session";
 import jwt from "jsonwebtoken";
 // eslint-disable-next-line prettier/prettier
 // import jwt from "jsonwebtoken";
-
+import { usersData } from "./database";
 let counter = 1;
 // eslint-disable-next-line prettier/prettier
 const secret = "banka";
-session.users = [
-  {
-    id: 1,
 
-    email: "solomon@yahoo.com",
-    first: "solomon",
-    last: "rock",
-    password: "123456",
-    type: "staff",
-    isAdmin: true,
-    token: "y88y8y8y8yyyyy"
-  }
-];
-const usersData = session.users;
-
+// const usersData = session.users;
+session.users = usersData;
 class User {
   // generic user class
 
@@ -46,9 +34,9 @@ class User {
     this._loggedIn = false;
 
     // eslint-disable-next-line no-underscore-dangle
-    this._id = counter; // user id to keep track of users
+    // this._id = counter; // user id to keep track of users
 
-    counter += 1;
+    // counter += 1;
   }
 
   getPassword() {
@@ -107,6 +95,10 @@ class User {
     return this._loggedIn;
   }
 
+  static setLoggedIn() {
+    this._loggedIn = true;
+  }
+
   save() {
     const first = this.getFirstName();
     const last = this.getLastName();
@@ -114,11 +106,11 @@ class User {
     const password = this.getPassword();
     const type = this.getType();
     const isAdmin = this.getIsAdmin();
-    const id = this.getId();
+    // const id = this.getId();
 
     const token = jwt.sign(
       {
-        id,
+        last,
         first,
         email
       },
@@ -126,7 +118,7 @@ class User {
     );
 
     const users = {
-      id,
+      id: usersData.length + 1,
       email,
       first,
       last,
@@ -136,13 +128,10 @@ class User {
       token
     };
 
-    if (!session.users) {
-      session.users = [];
-    }
     let lastInsert;
-    if (session.users.push(users)) {
+    if (usersData.push(users)) {
       lastInsert = {
-        id: this._id,
+        id: usersData.length,
         token,
         email,
         first,
@@ -166,16 +155,23 @@ class User {
 
     // this._loggedIn = true;
     found.isLoggedIn = true;
-    session.loggedIn = true;
+    session.loggedIn = found.isLoggedIn;
     if (found.type === "staff") {
       session.staffId = found.id;
+      session.type = found.type;
     } else if (found.type === "cashier") {
       session.cashierId = found.id;
+      session.type = found.type;
     } else {
       session.userId = found.id;
+      session.type = found.type;
     }
 
     return found;
+  }
+
+  static logout() {
+    session.loggedIn = false;
   }
 }
 

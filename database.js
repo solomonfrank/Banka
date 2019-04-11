@@ -1,5 +1,28 @@
+export let usersData = [
+  {
+    id: 1,
 
+    email: "solomon@yahoo.com",
+    first: "solomon",
+    last: "rock",
+    password: "123456",
+    type: "staff",
+    isAdmin: true,
+    token: "y88y8y8y8yyyyy"
+  },
+  {
+    id: 2,
 
-let usersData = [];
+    email: "solomon@yahoo.com",
+    first: "solomon",
+    last: "rock",
+    password: "123456",
+    type: "staff",
+    isAdmin: true,
+    token: "y88y8y8y8yyyyy"
+  }
+];
 
-module.exports = usersData;
+export let usersAccount = [];
+
+//export default usersData;

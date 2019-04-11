@@ -8,6 +8,7 @@ import Admin from "./admin";
 import Account from "./account";
 import Superadmin from "./superadmin";
 import Cashier from "./cashier";
+import { usersData, usersAccount } from "./database";
 
 const app = express();
 // eslint-disable-next-line no-use-before-define
@@ -69,6 +70,7 @@ app.post("/api/v1/sign-up", (req, res) => {
     return res
       .status(400)
       .json({ status: 400, msg: "error in the values your submitted" });
+  console.log(usersData);
   res.status(200).json({ status: 200, data: userDetail });
   // console.log(session.users);
 });
@@ -101,6 +103,7 @@ app.post("/api/v1/sign-in", (req, res) => {
   res.status(200).json({ status: 200, data: user });
 });
 
+//created account route
 app.post("/api/v1/create-account", (req, res) => {
   if (session.loggedIn) {
     const schema = {
@@ -150,7 +153,7 @@ app.post("/api/v1/create-account", (req, res) => {
 
 // logout route
 app.get("/api/v1/logout", (req, res) => {
-  // User.logout();
+  User.logout();
 
   session.userId = "";
 
@@ -170,7 +173,7 @@ app.delete("/api/v1/accounts/:accountNumber", (req, res) => {
     const acc = parseInt(req.params.accountNumber, 10);
 
     const admin = new Admin();
-    const foundvalue = admin.deleteAcc(acc, session.account);
+    const foundvalue = admin.deleteAcc(acc, usersAccount);
 
     if (!foundvalue) {
       return res.status(404).json({ status: 404, msg: "account not found" });
@@ -184,16 +187,20 @@ app.delete("/api/v1/accounts/:accountNumber", (req, res) => {
 
 // fetch user
 app.get("/api/v1/accounts/:accountNumber", (req, res) => {
-  if (session.staffId !== "" || session.cashierId !== "") {
-    const acc = parseInt(req.params.accountNumber, 10);
-    const admin = new Admin();
-    const account = admin.findOne(acc, session.account);
-    if (!account)
-      return res.status(404).json({ status: 404, msg: "account not found" });
-    res.status(200).json({ status: 200, data: account });
+  if (session.type !== "client") {
+    if (session.staffId !== "" || session.cashierId !== "") {
+      const acc = parseInt(req.params.accountNumber, 10);
+      const admin = new Admin();
+      const account = admin.findOne(acc, usersAccount);
+      if (!account)
+        return res.status(404).json({ status: 404, msg: "account not found" });
+      res.status(200).json({ status: 200, data: account });
+    } else {
+      // User.login(email,password);
+      res.status(401).json({ status: 401, msg: "you must login to continue" });
+    }
   } else {
-    // User.login(email,password);
-    res.status(401).json({ status: 401, msg: "you must login to continue" });
+    return res.status(403).json({ status: 403, msg: "unauthorized page" });
   }
 });
 // patch user
@@ -201,7 +208,7 @@ app.patch("/api/v1/accounts/:accountNumber", (req, res) => {
   const acc = parseInt(req.params.accountNumber, 10);
   if (session.staffId) {
     const admin = new Admin();
-    const arr = admin.activateAcc(acc, session.account);
+    const arr = admin.activateAcc(acc, usersAccount);
     if (!arr)
       return res.status(404).json({ status: 404, msg: "account not found" });
 
@@ -277,7 +284,7 @@ app.post("/api/v1/add-admin", (req, res) => {
   if (!lastInserted) {
     res.status(400).json({ msg: "user could not added" });
   }
-
+  console.log(usersData);
   res.status(200).json({ status: 200, data: lastInserted });
   // console.log(session.users);
 });
@@ -291,7 +298,7 @@ app.post("/api/v1/transaction/:accountNumber/credit", (req, res) => {
     const cashier = new Cashier();
     const credited = cashier.credit(
       accNum,
-      session.account,
+      usersAccount,
       session.cashierId,
       amount
     );
@@ -316,7 +323,7 @@ app.post("/api/v1/transaction/:accountNumber/debit", (req, res) => {
     const cashier = new Cashier();
     const credited = cashier.debit(
       accNum,
-      session.account,
+      usersAccount,
       session.cashierId,
       amount
     );
@@ -338,8 +345,8 @@ app.get("/api/v1/accounts", (req, res) => {
   if (session.staffId) {
     const admin = new Admin();
     const result = admin.findAll();
-    if (!result)
-      return res.status(404).json({ status: 404, msg: "result not found" });
+    if (result.length === 0)
+      return res.status(200).json({ status: 200, data: "no record found" });
 
     res.status(200).json({ status: 200, data: result });
   } else {

@@ -1,6 +1,7 @@
 // const User = require("./user");
 import session from "express-session";
 import User from "./user";
+import { usersAccount } from "./database";
 
 class Admin extends User {
   // eslint-disable-next-line class-methods-use-this
@@ -50,9 +51,9 @@ class Admin extends User {
 
   // eslint-disable-next-line class-methods-use-this
   findAll() {
-    if (!session.account) return false;
+    if (!usersAccount) return false;
 
-    return session.account;
+    return usersAccount;
   }
 }
 

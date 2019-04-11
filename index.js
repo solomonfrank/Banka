@@ -13,14 +13,15 @@ app.use(
     extended: true
   })
 );
-
+//const debug = Debug("http");
 app.use("/api/v1", router);
 
 // Set environment Port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`listening to port ${PORT}`);
+  //console.log(`listening to port ${PORT}`);
+  //debug(`listening to port ${PORT}`);
 });
 
 // module.exports = app;

@@ -1,60 +1,52 @@
-const User = require('./user');
-const Admin = require('./admin');
-class Superadmin extends Admin{
-    
+/* eslint-disable no-else-return */
+// const User = require("./user");
+import User from "./user";
+// const Admin = require("./admin");
+import Admin from "./admin";
 
-
-    static addStaff (firstName,lastName,password,email,type,isAdmin){
-     let staff =   new User( firstName,lastName,password,email,type = type,isAdmin = isAdmin );
-    let lastInserted =  staff.save();
+class Superadmin extends Admin {
+  static addStaff(firstName, lastName, password, email, type, isAdmin) {
+    const staff = new User(firstName, lastName, password, email, type, isAdmin);
+    const lastInserted = staff.save();
     return lastInserted;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  deleteAcc(acc, accArray) {
+    const found = accArray.indexOf(acc);
+    if (found === -1) {
+      return false;
+    } else {
+      const foundacc = accArray.filter(user => user.accNumber !== acc);
+      return foundacc;
+    }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  activateAcc(acc, accountArr) {
+    const found = accountArr.find(user => user.accNumber === acc);
+    if (!found) return false;
+
+    if (found.status === "dormant") {
+      found.status = "active";
+    } else if (found.status === "active") {
+      found.status = "dormant";
     }
 
-    deleteAcc(acc,accArray){
-      
-    let found = accArray.indexOf(acc)
-    if(found === -1){
-        return false;
-    }else{
-        let found = accArray.filter(user => user.accNumber !== acc);
-        return found;
+    return found;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  findOne(acc, accArray) {
+    const found = accArray.indexOf(acc);
+    if (found === -1) {
+      return false;
+    } else {
+      const foundacc = accArray.find(user => user.accNumber === acc);
+      return foundacc;
     }
-   
-    }
-
-    selectStaff(){
-        let staffgroup = usersData.filter(user => user.type === 'cashier');
-        return staffgroup;
-    }
-
-
-    activateAcc(acc,accountArr){
-
-        let found = accountArr.find(user => (user.accNumber === acc));
-        if(!found) return false;
-         
-        if(found.status === 'dormant'){
-            found.status = 'active';
-        }else if(found.status === 'active'){
-            found.status = 'dormant';
-        }
-       
-        return found;
-    }
-
-    findOne(acc,accArray){
-        let found = accArray.indexOf(acc)
-        if( found === -1){
-            return false
-        }else{
-         let found =    accArray.find(user => user.accNumber === acc);
-         return found;
-        }
-
-    }
-
-    
+  }
 }
 
-
-module.exports = Superadmin;
+// module.exports = Superadmin;
+export default Superadmin;

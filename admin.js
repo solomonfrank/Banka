@@ -1,18 +1,15 @@
+// const User = require("./user");
+import session from "express-session";
+import User from "./user";
 
-const User = require('./user');
-const session = require('express-session');
-let accDb = session.account;
+class Admin extends User {
+  // eslint-disable-next-line class-methods-use-this
+  deleteAcc(acc, accArray) {
+    // eslint-disable-next-line no-console
 
-
-class Admin extends User{
-
-
-
-    deleteAcc(acc, accArray){
-        console.log(accArray);
-        let found = accArray.find(user => (user.accNumber === acc));
-    //let found = accArray.indexOf(acc)
-  /* if(found === -1){
+    const found = accArray.find(user => user.accNumber === acc);
+    // let found = accArray.indexOf(acc)
+    /* if(found === -1){
         return false;
     }else{
         let found = accArray.filter(user => user.accNumber !== acc);
@@ -20,54 +17,45 @@ class Admin extends User{
     }
     
     */
-   if(!found){
-       return false;
-   }else{
-    //return accArray.filter(user => user.accNumber !== acc);
-   let index =  accArray.indexOf(found)
-    return accArray.splice(index,1);
-   }
-      
-   
-   
+    if (!found) {
+      return false;
+    }
+    // return accArray.filter(user => user.accNumber !== acc);
+    const index = accArray.indexOf(found);
+    return accArray.splice(index, 1);
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  activateAcc(acc, accountArr) {
+    const found = accountArr.find(user => user.accNumber === acc);
+    if (!found) return false;
+
+    if (found.status === "dormant") {
+      found.status = "active";
+    } else if (found.status === "active") {
+      found.status = "dormant";
     }
 
-    selectStaff(){
-        let staffgroup = usersData.filter(user => user.type === 'cashier');
-        return staffgroup;
-    }
+    return found;
+  }
 
+  // eslint-disable-next-line class-methods-use-this
+  findOne(acc, accArray) {
+    const result = accArray.find(user => user.accNumber === acc);
 
-    activateAcc(acc,accountArr){
+    if (!result) return false;
 
-        let found = accountArr.find(user => (user.accNumber === acc));
-        if(!found) return false;
-         
-        if(found.status === 'dormant'){
-            found.status = 'active';
-        }else if(found.status === 'active'){
-            found.status = 'dormant';
-        }
-       
-        return found;
-    }
+    return result;
+  }
 
-    findOne(acc,accArray){
-      let  result =    accArray.find(user => user.accNumber === acc);
+  // eslint-disable-next-line class-methods-use-this
+  findAll() {
+    if (!session.account) return false;
 
-      if(!result) return false;
-
-      return result;
-       
-
-    }
-    findAll(){
-        if(!session.account) return false;
-
-        return session.account;
-    }
+    return session.account;
+  }
 }
 
-
-
-module.exports = Admin;
+//
+// module.exports = Admin;
+export default Admin;

@@ -4,11 +4,12 @@
 // const session = require("express-session");
 import session from "express-session";
 // const User = require("./user");
+import { usersAccount } from "./database";
 import User from "./user";
 // const uuid = require('uuid');  //uuid.v4
-session.account = [];
+// session.account = [];
 
-let accountCounter = 1;
+//let accountCounter = 1;
 class Account {
   constructor(firstName, lastName, email, type, openingBalance = 0) {
     this._firstName = firstName;
@@ -17,9 +18,9 @@ class Account {
     this._type = type;
     this._openingBalance = openingBalance;
     this._balance = this._openingBalance;
-    this._id = accountCounter;
+    //this._id = accountCounter;
     this._status = "dormant";
-    accountCounter += 1;
+
     this._accountNumber = Math.floor((1 + Math.random()) * 1000000);
   }
 
@@ -85,6 +86,7 @@ class Account {
     const status = this.getStatus();
 
     const user = {
+      id: usersAccount.length + 1,
       first,
       last,
       email,
@@ -94,14 +96,14 @@ class Account {
       status
     };
     // return  accDb.push(user1);
-    if (!session.account) {
-      session.account = [];
-    }
+    //if (!session.account) {
+    // session.account = [];
+    // }
     let lastInsert;
-    if (session.account.push(user)) {
+    if (usersAccount.push(user)) {
       lastInsert = {
         // eslint-disable-next-line no-underscore-dangle
-        id: this._id,
+        id: usersAccount.length,
         email,
         first,
         last,

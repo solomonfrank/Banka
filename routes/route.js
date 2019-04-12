@@ -364,9 +364,4 @@ router.get('/accounts', (req, res) => {
     return res.status(400).json({ status: 400, msg: 'you must login' });
   }
 });
-
-router.get('*', (req, res) => {
-  res.status(200).json({ status: 200, msg: 'welcome to banka api' });
-});
-
 export default router;

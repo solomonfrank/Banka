@@ -1,7 +1,6 @@
 // const User = require("./user");
-import session from "express-session";
-import User from "./user";
-import { usersAccount } from "./database";
+import User from './user';
+import { usersAccount } from './database';
 
 class Admin extends User {
   // eslint-disable-next-line class-methods-use-this
@@ -16,7 +15,7 @@ class Admin extends User {
         let found = accArray.filter(user => user.accNumber !== acc);
         return found;
     }
-    
+
     */
     if (!found) {
       return false;
@@ -31,10 +30,10 @@ class Admin extends User {
     const found = accountArr.find(user => user.accNumber === acc);
     if (!found) return false;
 
-    if (found.status === "dormant") {
-      found.status = "active";
-    } else if (found.status === "active") {
-      found.status = "dormant";
+    if (found.status === 'dormant') {
+      found.status = 'active';
+    } else if (found.status === 'active') {
+      found.status = 'dormant';
     }
 
     return found;

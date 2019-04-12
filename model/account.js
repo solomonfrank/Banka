@@ -1,15 +1,11 @@
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
-// const session = require("express-session");
-import session from "express-session";
-// const User = require("./user");
-import { usersAccount } from "./database";
-import User from "./user";
-// const uuid = require('uuid');  //uuid.v4
-// session.account = [];
 
-//let accountCounter = 1;
+import session from 'express-session';
+// const User = require("./user");
+import { usersAccount } from './database';
+
+
+// let accountCounter = 1;
 class Account {
   constructor(firstName, lastName, email, type, openingBalance = 0) {
     this._firstName = firstName;
@@ -18,8 +14,8 @@ class Account {
     this._type = type;
     this._openingBalance = openingBalance;
     this._balance = this._openingBalance;
-    //this._id = accountCounter;
-    this._status = "dormant";
+    // this._id = accountCounter;
+    this._status = 'dormant';
 
     this._accountNumber = Math.floor((1 + Math.random()) * 1000000);
   }
@@ -71,9 +67,9 @@ class Account {
 
   setStatus() {
     const balance = this.getBalance();
-    if (balance <= 0) this._status = "dormant";
+    if (balance <= 0) this._status = 'dormant';
 
-    this._status = "active";
+    this._status = 'active';
   }
 
   save() {
@@ -93,10 +89,10 @@ class Account {
       Balance,
       type,
       accNumber,
-      status
+      status,
     };
     // return  accDb.push(user1);
-    //if (!session.account) {
+    // if (!session.account) {
     // session.account = [];
     // }
     let lastInsert;
@@ -111,7 +107,7 @@ class Account {
         accNumber,
         Balance,
         status,
-        type
+        type,
       };
       return lastInsert;
     }

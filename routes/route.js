@@ -1,14 +1,14 @@
 /* eslint-disable consistent-return */
-import express from "express";
-import Joi from "joi";
-import session from "express-session";
-import bodyParser from "body-parser";
-import User from "../model/user";
-import Admin from "../model/admin";
-import Account from "../model/account";
-import Superadmin from "../model/superadmin";
-import Cashier from "../model/cashier";
-import { usersData, usersAccount } from "../model/database";
+import express from 'express';
+import Joi from 'joi';
+import session from 'express-session';
+import bodyParser from 'body-parser';
+import User from '../model/user';
+import Admin from '../model/admin';
+import Account from '../model/account';
+import Superadmin from '../model/superadmin';
+import Cashier from '../model/cashier';
+import { usersAccount } from '../model/database';
 
 const router = express.Router();
 
@@ -18,12 +18,12 @@ app.use(bodyParser.json());
 // eslint-disable-next-line no-use-before-define
 app.use(
   bodyParser.urlencoded({
-    extended: true
-  })
+    extended: true,
+  }),
 );
 
 // sign up route
-router.post("/sign-up", (req, res) => {
+router.post('/sign-up', (req, res) => {
   const schema = {
     firstName: Joi.string()
       .trim()
@@ -43,14 +43,14 @@ router.post("/sign-up", (req, res) => {
       .required(),
     confirmPassword: Joi.string()
       .required()
-      .valid(Joi.ref("password"))
+      .valid(Joi.ref('password'))
       .options({
         language: {
           any: {
-            allowOnly: "!!Password do not match"
-          }
-        }
-      })
+            allowOnly: '!!Password do not match',
+          },
+        },
+      }),
   };
   const result = Joi.validate(req.body, schema);
   if (result.error) {
@@ -69,17 +69,14 @@ router.post("/sign-up", (req, res) => {
   // user.save();
 
   // eslint-disable-next-line consistent-return
-  if (!userDetail)
-    return res
-      .status(400)
-      .json({ status: 400, msg: "error in the values your submitted" });
+  if (!userDetail) return res.status(400).json({ status: 400, msg: 'error in the values your submitted' });
   res.status(200).json({ status: 200, data: userDetail });
   // console.log(session.users);
 });
 
 // sign in route
 
-router.post("/sign-in", (req, res) => {
+router.post('/sign-in', (req, res) => {
   const schema = {
     password: Joi.string()
       .regex(/^[a-zA-Z0-9]{3,30}$/)
@@ -88,7 +85,7 @@ router.post("/sign-in", (req, res) => {
     email: Joi.string()
       .email({ minDomainAtoms: 2 })
       .required()
-      .trim()
+      .trim(),
   };
   const result = Joi.validate(req.body, schema);
   if (result.error) {
@@ -100,14 +97,13 @@ router.post("/sign-in", (req, res) => {
 
   const user = User.login(email, password);
   // eslint-disable-next-line consistent-return
-  if (!user)
-    return res.status(400).json({ status: 400, msg: "invalid credential" });
+  if (!user) return res.status(400).json({ status: 400, msg: 'invalid credential' });
 
   res.status(200).json({ status: 200, data: user });
 });
 
 // created account route
-router.post("/create-account", (req, res) => {
+router.post('/create-account', (req, res) => {
   if (session.loggedIn) {
     const schema = {
       firstName: Joi.string()
@@ -124,7 +120,7 @@ router.post("/create-account", (req, res) => {
         .trim()
         .min(3)
         .max(20)
-        .required()
+        .required(),
     };
     const result = Joi.validate(req.body, schema);
     if (result.error) {
@@ -142,35 +138,35 @@ router.post("/create-account", (req, res) => {
       lastName,
       email,
       type,
-      openingBalance
+      openingBalance,
     );
     const user = person.save();
     res.status(200).json({ status: 200, data: user });
   } else {
     res
       .status(400)
-      .json({ status: 400, msg: "you must login to create an account" });
+      .json({ status: 400, msg: 'you must login to create an account' });
   }
   // console.log(session.account);
 });
 
 // logout route
-router.get("/logout", (req, res) => {
+router.get('/logout', (req, res) => {
   User.logout();
 
-  session.userId = "";
+  session.userId = '';
 
-  session.staffId = "";
+  session.staffId = '';
 
-  session.cashierId = "";
+  session.cashierId = '';
 
-  res.json({ msg: "you have successfully sign out" });
+  res.json({ msg: 'you have successfully sign out' });
 });
 
 // delete user route
 
 // eslint-disable-next-line consistent-return
-router.delete("/accounts/:accountNumber", (req, res) => {
+router.delete('/accounts/:accountNumber', (req, res) => {
   if (session.staffId) {
     // eslint-disable-next-line radix
     // eslint-disable-next-line prettier/prettier
@@ -180,43 +176,47 @@ router.delete("/accounts/:accountNumber", (req, res) => {
     const foundvalue = admin.deleteAcc(acc, usersAccount);
 
     if (!foundvalue) {
-      return res.status(404).json({ status: 404, msg: "account not found" });
+      return res.status(404).json({ status: 404, msg: 'account not found' });
     }
 
-    res.status(200).json({ status: 200, msg: "account deleted successfully" });
+    res.status(200).json({ status: 200, msg: 'account deleted successfully' });
   } else {
-    res.status(401).json({ status: 401, msg: "you must login to continue" });
+    res.status(401).json({ status: 401, msg: 'you must login to continue' });
   }
 });
 
 // fetch user
-router.get("/accounts/:accountNumber", (req, res) => {
-  if (session.type !== "client") {
-    if (session.staffId !== "" || session.cashierId !== "") {
+router.get('/accounts/:accountNumber', (req, res) => {
+  if (session.type !== 'client') {
+    if (session.staffId !== '' || session.cashierId !== '') {
       const acc = parseInt(req.params.accountNumber, 10);
       const admin = new Admin();
       const account = admin.findOne(acc, usersAccount);
+      // eslint-disable-next-line no-console
+      console.log(account);
+      // eslint-disable-next-line no-console
+      console.log(typeof account);
       if (!account) {
-        return res.status(404).json({ status: 404, msg: "account not found" });
+        return res.status(200).json({ status: 200, data: 'account not found' });
       }
       res.status(200).json({ status: 200, data: account });
     } else {
       // User.login(email,password);
-      res.status(401).json({ status: 401, msg: "you must login to continue" });
+      res.status(401).json({ status: 401, msg: 'you must login to continue' });
     }
   } else {
-    return res.status(403).json({ status: 403, msg: "unauthorized page" });
+    return res.status(403).json({ status: 403, msg: 'unauthorized page' });
   }
 });
 // patch user
 // eslint-disable-next-line consistent-return
-router.patch("/accounts/:accountNumber", (req, res) => {
+router.patch('/accounts/:accountNumber', (req, res) => {
   const acc = parseInt(req.params.accountNumber, 10);
   if (session.staffId) {
     const admin = new Admin();
     const arr = admin.activateAcc(acc, usersAccount);
     if (!arr) {
-      return res.status(404).json({ status: 404, msg: "account not found" });
+      return res.status(404).json({ status: 404, msg: 'account not found' });
     }
 
     res.status(200).json({ status: 200, data: arr });
@@ -224,11 +224,11 @@ router.patch("/accounts/:accountNumber", (req, res) => {
     // User.login(email,password);
     return res
       .status(401)
-      .json({ status: 401, msg: "you must login to continue" });
+      .json({ status: 401, msg: 'you must login to continue' });
   }
 });
 
-router.post("/add-admin", (req, res) => {
+router.post('/add-admin', (req, res) => {
   const schema = {
     firstName: Joi.string()
       .trim()
@@ -255,14 +255,14 @@ router.post("/add-admin", (req, res) => {
     isAdmin: Joi.boolean().required(),
     confirmPassword: Joi.string()
       .required()
-      .valid(Joi.ref("password"))
+      .valid(Joi.ref('password'))
       .options({
         language: {
           any: {
-            allowOnly: "!!Passwords do not match"
-          }
-        }
-      })
+            allowOnly: '!!Passwords do not match',
+          },
+        },
+      }),
   };
   const result = Joi.validate(req.body, schema);
   if (result.error) {
@@ -286,18 +286,18 @@ router.post("/add-admin", (req, res) => {
     // eslint-disable-next-line no-self-assign
     (type = type),
     // eslint-disable-next-line no-self-assign
-    (isAdmin = isAdmin)
+    (isAdmin = isAdmin),
   );
   if (!lastInserted) {
-    res.status(400).json({ msg: "user could not added" });
+    res.status(400).json({ msg: 'user could not added' });
   }
-  console.log(usersData);
+  // console.log(usersData);
   res.status(200).json({ status: 200, data: lastInserted });
   // console.log(session.users);
 });
 
 // credit account
-router.post("/transaction/:accountNumber/credit", (req, res) => {
+router.post('/transaction/:accountNumber/credit', (req, res) => {
   if (session.cashierId || session.staffId) {
     const accNum = parseInt(req.params.accountNumber, 10);
     const { amount } = req.body;
@@ -307,23 +307,23 @@ router.post("/transaction/:accountNumber/credit", (req, res) => {
       accNum,
       usersAccount,
       session.cashierId,
-      amount
+      amount,
     );
     // eslint-disable-next-line no-console
     console.log(credited);
     if (!credited) {
-      return res.status(404).json({ status: 404, msg: "account not found" });
+      return res.status(404).json({ status: 404, msg: 'account not found' });
     }
     res.status(200).json({ status: 200, data: credited });
   } else {
     return res
       .status(403)
-      .json({ status: 403, msg: "you must login to accessible the page" });
+      .json({ status: 403, msg: 'you must login to accessible the page' });
   }
 });
 
 // debit account
-router.post("/transaction/:accountNumber/debit", (req, res) => {
+router.post('/transaction/:accountNumber/debit', (req, res) => {
   if (session.cashierId || session.staffId) {
     const accNum = parseInt(req.params.accountNumber, 10);
     const { amount } = req.body;
@@ -333,39 +333,39 @@ router.post("/transaction/:accountNumber/debit", (req, res) => {
       accNum,
       usersAccount,
       session.cashierId,
-      amount
+      amount,
     );
     // eslint-disable-next-line no-console
     console.log(credited);
     if (!credited) {
-      return res.status(404).json({ status: 404, msg: "account not found" });
+      return res.status(404).json({ status: 404, msg: 'account not found' });
     }
     res.status(200).json({ status: 200, data: credited });
   } else {
     return res
       .status(403)
-      .json({ status: 403, msg: "you must login to accessible the page" });
+      .json({ status: 403, msg: 'you must login to accessible the page' });
   }
 });
 
 // fetch all account
 
-router.get("/accounts", (req, res) => {
+router.get('/accounts', (req, res) => {
   if (session.staffId) {
     const admin = new Admin();
     const result = admin.findAll();
     if (result.length === 0) {
-      return res.status(200).json({ status: 200, data: "no record found" });
+      return res.status(200).json({ status: 200, data: 'no record found' });
     }
 
     res.status(200).json({ status: 200, data: result });
   } else {
-    return res.status(400).json({ status: 400, msg: "you must login" });
+    return res.status(400).json({ status: 400, msg: 'you must login' });
   }
 });
 
-router.get("*", (req, res) => {
-  res.status(200).json({ status: 200, msg: "welcome to banka api" });
+router.get('*', (req, res) => {
+  res.status(200).json({ status: 200, msg: 'welcome to banka api' });
 });
 
 export default router;

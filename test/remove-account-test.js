@@ -1,15 +1,15 @@
 /* eslint-disable no-undef */
 import chai from 'chai';
+
 import chaiHttp from 'chai-http';
+
 import app from '../index';
-// import chai from "chai";
-// import chaiHttp from "chai-http";
-// import app from "../index";
 
 chai.should();
 chai.use(chaiHttp);
 
-describe('Testing for activate-deactivate endpoint', () => {
+// eslint-disable-next-line no-undef
+describe('Testing for delete endpoint', () => {
   it('sign in user when all fields are provided', (done) => {
     const data = {
       email: 'solomon@yahoo.com',
@@ -62,18 +62,16 @@ describe('Testing for activate-deactivate endpoint', () => {
     const accountNumber = 5555555;
     chai
       .request(app)
-      .patch(`/api/v1/accounts/${accountNumber}`)
+      .delete(`/api/v1/accounts/${accountNumber}`)
 
       .end((err, res) => {
         res.body.should.have.status(200);
         res.body.should.be.a('object');
-        res.body.should.have.property('data');
+        res.body.should.have
+          .property('msg')
+          .equal('account deleted successfully');
         res.body.should.have.property('status');
-        res.body.data.should.have.property('first');
-        res.body.data.should.have.property('last');
-        res.body.data.should.have.property('email');
-        res.body.data.should.have.property('accNumber');
-        res.body.data.should.have.property('status');
+
         done();
       });
   });
@@ -81,7 +79,7 @@ describe('Testing for activate-deactivate endpoint', () => {
     const accountNumber = 66;
     chai
       .request(app)
-      .patch(`/api/v1/accounts/${accountNumber}`)
+      .delete(`/api/v1/accounts/${accountNumber}`)
 
       .end((err, res) => {
         res.body.should.have.status(404);

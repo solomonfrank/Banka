@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r @babel/register",
+    "test": "mocha -r @babel/register test/*.js",
     "start": " nodemon  --exec babel-node index.js",
     "build": "babel src -d lib"
   },
@@ -41,6 +41,8 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "chai-like": "^1.1.1",
+    "chai-things": "^0.2.0",
     "debug": "^4.1.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",

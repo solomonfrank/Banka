@@ -348,3 +348,7 @@ tbody tr:hover {
 navbar-wrapper super {
   position: relative;
 }
+.sidebar {
+
+  background-color: rgb(65, 172, 213);
+}

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "10.14.1"
+  },
   "scripts": {
     "test": "mocha -r @babel/register test/*.js",
     "start": " nodemon  --exec babel-node index.js",

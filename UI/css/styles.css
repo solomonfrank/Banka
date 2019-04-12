@@ -26,7 +26,7 @@ body{
 	
 .head-container{
 	
-	 background-image:url("../img/img7.jpg"); 
+	 background-image:url("../img/img7.jpeg"); 
 	background-repeat: no-repeat;
     opacity: 1;
 	 background-color: #cccccc; /* Used if the image is unavailable */
@@ -187,10 +187,7 @@ p{
 	
 }
 
-.single:hover{
-	
-	transform: scale3d(1.03,1.12,1.12)
-}
+
 .img-span{
 	width:120px;
 	height:120px;

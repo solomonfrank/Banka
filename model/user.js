@@ -1,16 +1,17 @@
 /* eslint-disable no-underscore-dangle */
 // eslint-disable-next-line prettier/prettier
-import session from "express-session";
+import session from 'express-session';
 // eslint-disable-next-line no-unused-vars
 // eslint-disable-next-line prettier/prettier
 // const jwt = require("jsonwebtoken");
-import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken';
 // eslint-disable-next-line prettier/prettier
 // import jwt from "jsonwebtoken";
-import { usersData } from "./database";
-let counter = 1;
+import { usersData } from './database';
+
+// const counter = 1;
 // eslint-disable-next-line prettier/prettier
-const secret = "banka";
+const secret = 'banka';
 
 // const usersData = session.users;
 session.users = usersData;
@@ -22,8 +23,8 @@ class User {
     lastName,
     password,
     email,
-    type = "client",
-    isAdmin = false
+    type = 'client',
+    isAdmin = false,
   ) {
     this._firstName = firstName;
     this._lastName = lastName;
@@ -112,9 +113,9 @@ class User {
       {
         last,
         first,
-        email
+        email,
       },
-      secret
+      secret,
     );
 
     const users = {
@@ -125,7 +126,7 @@ class User {
       password,
       type,
       isAdmin,
-      token
+      token,
     };
 
     let lastInsert;
@@ -136,7 +137,7 @@ class User {
         email,
         first,
         last,
-        type
+        type,
       };
       return lastInsert;
       // eslint-disable-next-line no-else-return
@@ -148,7 +149,7 @@ class User {
 
   static login(email, password) {
     const found = usersData.find(
-      user => user.email === email && user.password === password
+      user => user.email === email && user.password === password,
     );
 
     if (!found) return false;
@@ -156,10 +157,10 @@ class User {
     // this._loggedIn = true;
     found.isLoggedIn = true;
     session.loggedIn = found.isLoggedIn;
-    if (found.type === "staff") {
+    if (found.type === 'staff') {
       session.staffId = found.id;
       session.type = found.type;
-    } else if (found.type === "cashier") {
+    } else if (found.type === 'cashier') {
       session.cashierId = found.id;
       session.type = found.type;
     } else {

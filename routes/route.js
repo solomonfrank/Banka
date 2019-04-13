@@ -67,12 +67,11 @@ router.post('/sign-up', (req, res) => {
   const person = new User(firstName, lastName, password, email);
 
   const userDetail = person.save();
-  // user.save();
+
 
   // eslint-disable-next-line consistent-return
   if (!userDetail) return res.status(400).json({ status: 400, msg: 'error in the values your submitted' });
   res.status(200).json({ status: 200, data: userDetail });
-  // console.log(session.users);
 });
 
 // sign in route
@@ -148,7 +147,6 @@ router.post('/create-account', (req, res) => {
       .status(400)
       .json({ status: 400, msg: 'you must login to create an account' });
   }
-  // console.log(session.account);
 });
 
 // logout route
@@ -168,7 +166,7 @@ router.get('/logout', (req, res) => {
 
 // eslint-disable-next-line consistent-return
 router.delete('/accounts/:accountNumber', (req, res) => {
-  if (session.staffId) {
+  if (session.staffId && session.loggedIn) {
     // eslint-disable-next-line radix
     // eslint-disable-next-line prettier/prettier
     const acc = parseInt(req.params.accountNumber, 10);
@@ -189,14 +187,11 @@ router.delete('/accounts/:accountNumber', (req, res) => {
 // fetch user
 router.get('/accounts/:accountNumber', (req, res) => {
   if (session.type !== 'client') {
-    if (session.staffId !== '' || session.cashierId !== '') {
+    if ((session.staffId !== '' || session.cashierId !== '') && session.loggedIn) {
       const acc = parseInt(req.params.accountNumber, 10);
       const admin = new Admin();
       const account = admin.findOne(acc, usersAccount);
-      // eslint-disable-next-line no-console
-      console.log(account);
-      // eslint-disable-next-line no-console
-      console.log(typeof account);
+
       if (!account) {
         return res.status(200).json({ status: 200, data: 'account not found' });
       }
@@ -213,7 +208,7 @@ router.get('/accounts/:accountNumber', (req, res) => {
 // eslint-disable-next-line consistent-return
 router.patch('/accounts/:accountNumber', (req, res) => {
   const acc = parseInt(req.params.accountNumber, 10);
-  if (session.staffId) {
+  if (session.staffId && session.loggedIn) {
     const admin = new Admin();
     const arr = admin.activateAcc(acc, usersAccount);
     if (!arr) {
@@ -292,14 +287,13 @@ router.post('/add-admin', (req, res) => {
   if (!lastInserted) {
     res.status(400).json({ msg: 'user could not added' });
   }
-  // console.log(usersData);
+
   res.status(200).json({ status: 200, data: lastInserted });
-  // console.log(session.users);
 });
 
 // credit account
 router.post('/transaction/:accountNumber/credit', (req, res) => {
-  if (session.cashierId || session.staffId) {
+  if ((session.cashierId || session.staffId) && session.loggedIn) {
     const accNum = parseInt(req.params.accountNumber, 10);
     const { amount } = req.body;
 
@@ -310,8 +304,8 @@ router.post('/transaction/:accountNumber/credit', (req, res) => {
       session.cashierId,
       amount,
     );
-    // eslint-disable-next-line no-console
-    console.log(credited);
+
+
     if (!credited) {
       return res.status(404).json({ status: 404, msg: 'account not found' });
     }
@@ -325,7 +319,7 @@ router.post('/transaction/:accountNumber/credit', (req, res) => {
 
 // debit account
 router.post('/transaction/:accountNumber/debit', (req, res) => {
-  if (session.cashierId || session.staffId) {
+  if ((session.cashierId || session.staffId) && session.loggedIn) {
     const accNum = parseInt(req.params.accountNumber, 10);
     const { amount } = req.body;
 
@@ -336,8 +330,7 @@ router.post('/transaction/:accountNumber/debit', (req, res) => {
       session.cashierId,
       amount,
     );
-    // eslint-disable-next-line no-console
-    console.log(credited);
+
     if (!credited) {
       return res.status(404).json({ status: 404, msg: 'account not found' });
     }
@@ -352,7 +345,7 @@ router.post('/transaction/:accountNumber/debit', (req, res) => {
 // fetch all account
 
 router.get('/accounts', (req, res) => {
-  if (session.staffId) {
+  if (session.staffId && session.loggedIn) {
     const admin = new Admin();
     const result = admin.findAll();
     if (result.length === 0) {

@@ -79,6 +79,14 @@ input:last-child {
   z-index: 9999999999;
 }
 
+
+.account-wrapper{
+  display:flex;
+}
+
+
+
+
 div.content {
   padding: 1px 16px;
 
@@ -351,4 +359,16 @@ navbar-wrapper super {
 .sidebar {
 
   background-color: rgb(65, 172, 213);
+}
+
+
+
+.account-container{
+  margin:auto;
+  color:black;
+  
+}
+.account-container a{
+  color:white;
+  background-color:blue;
 }

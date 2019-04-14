@@ -14,7 +14,7 @@ app.use(
   }),
 );
 // const debug = Debug("http");
-app.use('https://polar-cliffs-82683.herokuapp.com/api/v1', router);
+app.use('/api/v1', router);
 
 // Set environment Port
 const PORT = process.env.PORT || 5000;

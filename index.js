@@ -1,10 +1,10 @@
 /* eslint-disable consistent-return */
 import express from 'express';
 import bodyParser from 'body-parser';
-// import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import router from './routes/route';
 
-// dotenv.config();
+dotenv.config();
 
 // import router from "./routes/route";
 const app = express();

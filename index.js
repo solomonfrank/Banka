@@ -1,7 +1,10 @@
 /* eslint-disable consistent-return */
 import express from 'express';
 import bodyParser from 'body-parser';
+// import dotenv from 'dotenv';
 import router from './routes/route';
+
+// dotenv.config();
 
 // import router from "./routes/route";
 const app = express();
@@ -14,6 +17,9 @@ app.use(
   }),
 );
 // const debug = Debug("http");
+
+// eslint-disable-next-line no-console
+
 app.use('/api/v1', router);
 
 // Set environment Port

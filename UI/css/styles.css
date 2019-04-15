@@ -282,6 +282,10 @@ font:15px 1.5 arial san serif
 /* Extra small devices (phones, 600px and down) */
 
 @media screen and (max-width:600px){
+	 .burger-list .open{
+		 margin-right:0;
+	 }
+	 
 	 .side{
 		margin-top:35px;
 	}

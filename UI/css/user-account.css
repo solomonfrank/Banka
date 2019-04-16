@@ -1,0 +1,377 @@
+body {
+    margin: 0;
+    padding: 0;
+  
+    overflow-y: scroll;
+    background-color: rgba(235, 235, 235, 0.4);
+    box-sizing: border-box;
+  }
+  
+  img {
+    width: 25px;
+    height: 25px;
+  }
+  .navbar-right .icon {
+    display: none;
+  }
+  
+  .navbar-wrapper {
+    position: fixed;
+    background-color: blue;
+    color: white;
+  
+    z-index: 9999999999;
+    width: 100%;
+  }
+  
+  .navbar-item-left {
+    flex-basis: 50%;
+    list-style-type: none;
+  }
+  
+  .navbar-item-left li {
+    float: left;
+    color: white;
+    font-size: 19px;
+    font-family: bold;
+    padding: 10px;
+  }
+  
+  input {
+    padding: 7px;
+  
+    border: 1px solid rgba(22, 80, 227, 0.3);
+  }
+  input:first-child {
+    width: 250px;
+  }
+
+  .navbar-right {
+    flex-basis: 50%;
+    list-style-type: none;
+  }
+  .navbar-right li {
+    float: left;
+    padding: 10px;
+    margin-right: 5px;
+  }
+  
+  .navbar-right li a {
+    color: white;
+    font-size: 19px;
+    font-family: bold;
+    margin-left: 10px;
+    text-decoration: none;
+  }
+  
+  .navbar-right li:last-child {
+    margin-right: 10px;
+  }
+ 
+  .navbar {
+    z-index: 9999999999;
+  }
+    
+  .icon {
+    display: block;
+  
+    width: 40px;
+  }
+  
+  ul {
+    list-style-type: none;
+  }
+  
+  .icon li {
+    margin-top: -15px;
+    margin-left: -20px;
+  }
+  .icon {
+    margin-top: 40px;
+  }
+  .burger {
+    cursor: pointer;
+  }
+  
+  span.icon-bar {
+    background-color: white;
+    width: 46px;
+    height: 5px;
+    margin-bottom: 5px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .icon {
+    display: none;
+  }
+ 
+ 
+  .sidebar-small {
+    display: none;
+  }
+  
+  form #form1{
+      padding:-20px;
+  }
+  .login-title{
+    text-align:center;
+}
+.form-input  input{
+  width:90%;
+  
+      padding:10px;
+      border:1px solid rgba(5, 116, 234,1);
+      border-radius:3px;
+  
+  
+}
+select{
+  width:100%;
+  
+      padding:10px;
+      border:1px solid rgba(5, 116, 234,1);
+      border-radius:3px;
+  
+  
+}
+.inner-form-wrap{
+    padding: 0;
+}
+
+
+.form-group{
+    padding:0;
+}
+.form-label{
+  font-size:17px;
+  
+}
+.form-group{
+  margin-bottom:10px;
+}
+button{
+  background-color:rgba(5, 116, 234,1);
+   color:white;
+      text-align:center;
+      padding:15px;
+      border-radius:5px;
+      font-size:22px;
+      line-height:0.5rem;
+  
+    
+}
+  @media screen and (max-width: 600px) {
+     
+    .side {
+      display: block;
+      width: 200px;
+      color: black;
+      height: 100%;
+      position: fixed;
+      z-index: 9999999;
+      background-color: rgb(65, 172, 213);
+      position: fixed;
+    }
+    .side ul {
+      margin-top: 100px;
+      margin-left: -30px;
+    }
+    .side ul li {
+      padding: 10px;
+      margin-left: 0px;
+    }
+    .side ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 19px;
+    }
+    .wrap-form {
+      display: none;
+    }
+    .navbar-right {
+      display: none;
+    }
+    .icon {
+      display: block;
+      float: right;
+      margin-top: 20px;
+    }
+ 
+  }
+  
+  @media screen and (min-width: 600px) {
+    .side {
+      display: block;
+      width: 200px;
+      color: black;
+      height: 100%;
+      position: fixed;
+      z-index: 9999999;
+      background-color: rgb(65, 172, 213);
+      position: fixed;
+    }
+    .side ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 19px;
+    }
+    .side ul {
+      margin-top: 100px;
+      margin-left: -30px;
+    }
+    .navbar-right {
+      display: none;
+    }
+  
+
+    .icon {
+      display: block;
+      float: right;
+      margin-top: 20px;
+    }
+   
+  
+  }
+  @media screen and (min-width: 786px) {
+    .icon {
+      display: block;
+      float: right;
+      margin-top: 20px;
+    }
+    .side {
+      display: block;
+    }
+  
+  
+    div .content {
+      margin-left: 10px;
+    }
+   
+    .side {
+      display: block;
+      width: 200px;
+      color: black;
+      height: 100%;
+      position: fixed;
+      z-index: 9999999;
+      background-color: rgb(65, 172, 213);
+      position: fixed;
+    }
+    .side ul {
+      margin-top: 100px;
+      margin-left: -30px;
+    }
+    .side ul li {
+      padding: 8px;
+    }
+    .side ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 19px;
+    }
+  }
+  
+  @media screen and (min-width: 990px) {
+
+
+     select{
+         width: 92%;
+     }
+    .sidebar-small {
+      display: none;
+      background-color: rgb(65, 172, 213);
+    }
+  
+    .wrap-form {
+      display: block;
+    }
+    .navbar-right {
+      display: block;
+    }
+    .icon {
+      display: none;
+      float: right;
+      margin-top: 20px;
+    }
+  
+    .navbar-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  
+ 
+ 
+  
+ 
+  
+  .account-wrapper{
+    display:flex;
+  }
+  .account-container{
+    margin:auto;
+    color:black;
+    margin-top:50vh;
+    
+  }
+
+  .account-container p{
+      line-height:15px;
+      text-align:center;
+      font-size:20px;
+      
+  }
+  .account-container a{
+    color:white;
+    background-color:rgba(5, 116, 234,1);
+    padding: 10px;
+    border-radius:3px;
+    text-decoration: none;
+    margin-left:35%;
+    font-size:18px;
+    
+  }
+
+
+  /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+ 

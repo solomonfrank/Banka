@@ -1,13 +1,21 @@
 
-body{
+body,html{
 	margin:0;
 	padding:0;
 	  overflow-x: hidden;
-  overflow-y: scroll;
-  background-color:rgba(235, 235, 235,0.4);
+	
+		overflow-y: scroll;
+  background-color:white;
 	box-sizing:border-box;
 	color:rgb(76, 38, 34);
 	font-size:17px;
+}
+body{
+	overflow-y:hidden;
+}
+nav{
+	padding:0;
+	width:0;
 }
 
 .top-title{
@@ -76,27 +84,23 @@ ul{
 	 
  }
 
-li{
-	
-	float:left;
-	
-	
-}
+
 
 li a {
 	padding-top:-90px;
 }
 
 .second-nav {
-	 padding: 20px;
+	 padding: 20px 0;
 }
+
 
 .menu-list{
 	float:left;
 	
 }
 .menu-list li{
-	margin-left:20px;
+	margin-left:30px;
 	
 }
 .menu-list >li >a{
@@ -123,7 +127,7 @@ li a {
 	position:fixed;
 	
 	
-	width:100%;
+	width:100vw;
 	background-color:rgb(76, 38, 34);
 	
 	
@@ -211,6 +215,9 @@ figure img{
 .bottom-title{
 	margin-bottom:30px;
 }
+.bottom-title p{
+	font-size:20px;
+}
 
 .section-3{
 	 background-image:url("../img/img9.jpeg");
@@ -236,6 +243,8 @@ figure img{
 
 .sub-section-3 p{
 	color:white;
+	font-size:25px;
+	line-height:28px;
 }
 
 .display-exchange-rate{
@@ -258,17 +267,11 @@ figure img{
 }
 
 footer{
-background-color:rgb(92, 102, 112);
+background-color:rgb(22, 21, 21);
 z-index:99999;
 padding:20px;
 
 }
-footer a{
-	padding:18px;
-}
-
-
-
 
 
 /*   font shortcut
@@ -282,7 +285,19 @@ font:15px 1.5 arial san serif
 
 /* Extra small devices (phones, 600px and down) */
 
+
 @media screen and (max-width:600px){
+	li{
+	
+		float:left;
+		
+		
+	}
+	section.section-wrapper{
+		width:100vw;
+		padding:0;
+	
+	}
 	 .burger-list .open{
 		 margin-right:0;
 	 }
@@ -293,6 +308,7 @@ font:15px 1.5 arial san serif
 	.open{
 		
 		margin-top:-90px;
+		width:100vw;
 	}
 	.wrapper-ways-to-bank{
 	
@@ -332,6 +348,7 @@ font:15px 1.5 arial san serif
 	.icon li{
 		margin-top:-15px;
 		margin-left:-20px;
+		width:0;
 		
 	}
 	
@@ -411,7 +428,12 @@ figure{
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media screen and (min-width:600px){
+	li{
 	
+		float:left;
+		
+		
+	}
 	
 	.wrapper-ways-to-bank{
 	
@@ -546,7 +568,12 @@ figure{
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media screen and (min-width:768px){
+	li{
 	
+		float:left;
+		
+		
+	}
 	.wrapper-ways-to-bank{
 	
 	padding:15px;
@@ -668,7 +695,12 @@ figure{
 
 /* Large devices (laptops/desktops, 990px and up) */
 @media screen and (min-width:990px){
+		li{
 	
+		float:left;
+		
+		
+	}
 	
 	
 	.top-nav-wrapper{
@@ -857,7 +889,8 @@ margin-left:10px;
 	.side{
 		display:block;
 		position:fixed;
-		width:100%;
+		width:100vw;
+		margin-top:0;
 		
 	}
 	 .sidebar a {
@@ -876,5 +909,35 @@ margin-left:10px;
 }
 
 
+.footer-section{
+	margin-bottom:0px;
 
-	  
+}
+footer > ul{
+	padding:30px 0;
+}
+
+
+footer >ul> li{
+
+	padding:2px;
+	margin-left:0px;
+	padding:0;
+	display:inline-block;
+	margin-top:0;
+	margin-right:18px;
+	line-height:24px;
+
+
+
+}
+footer-section  a{
+	font-size:17px;
+	margin-left:10px;
+	font-size:18px;
+	margin-top:10px;
+}
+
+
+
+

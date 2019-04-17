@@ -8,7 +8,8 @@ document.querySelector('.burger-list').onclick = () => {
 
 
 const modal = document.querySelector('#myModal');
-const btn = document.querySelector('#btn');
+const btn = document.querySelector('#btn') || document.querySelector('.add-role') || document.querySelector('#add-btn');
+
 const span = document.querySelector('.close');
 btn.onclick = () => {
   modal.style.display = 'block';

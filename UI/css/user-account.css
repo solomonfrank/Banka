@@ -172,7 +172,8 @@ button{
       line-height:0.5rem;
       border:1px solid white;
       background-color:green;
-      width:95%;;
+      width:95%;
+      border:none;
   
     
 }

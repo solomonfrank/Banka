@@ -1,4 +1,4 @@
-/* eslint-disable consistent-return */
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
@@ -8,18 +8,15 @@ dotenv.config();
 
 // import router from "./routes/route";
 const app = express();
-// eslint-disable-next-line no-use-before-define
+
 app.use(bodyParser.json());
-// eslint-disable-next-line no-use-before-define
+
 app.use(
   bodyParser.urlencoded({
     extended: true,
   }),
 );
 // const debug = Debug("http");
-
-// eslint-disable-next-line no-console
-
 app.use('/api/v1', router);
 
 // Set environment Port
@@ -30,5 +27,4 @@ app.listen(PORT, () => {
   // debug(`listening to port ${PORT}`);
 });
 
-// module.exports = app;
 export default app;

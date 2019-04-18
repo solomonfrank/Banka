@@ -1,14 +1,16 @@
-/* eslint-disable no-undef */
 
-// eslint-disable-next-line no-undef
+
+
+
 document.querySelector('.burger-list').onclick = () => {
-  // eslint-disable-next-line no-undef
+
   document.querySelector('.sidebar-small').classList.toggle('side');
 };
 
 
 const modal = document.querySelector('#myModal');
-const btn = document.querySelector('#btn');
+const btn = document.querySelector('#btn') || document.querySelector('.add-role') || document.querySelector('#add-btn') || document.querySelector('.credit');
+
 const span = document.querySelector('.close');
 btn.onclick = () => {
   modal.style.display = 'block';
@@ -23,3 +25,34 @@ window.onclick = (event) => {
     modal.style.display = 'none';
   }
 };
+
+
+
+document.querySelector('.dropdown-btn').onclick = () => {
+
+
+  document.querySelector('.dropdown').classList.toggle('drop');
+};
+//debit 
+
+
+const modalDebit = document.querySelector('.modal-debit');
+const btnDebit = document.querySelector('.debit');
+
+const spanx = document.querySelector('#close-debit');
+btnDebit.onclick = () => {
+
+  modalDebit.style.display = 'block';
+};
+spanx.onclick = () => {
+  modalDebit.style.display = 'none';
+};
+
+// When the user clicks anywhere outside of the modal, close it
+
+window.onclick = (event) => {
+  if (event.target === modalDebit) {
+    modalDebit.style.display = 'none';
+  }
+};
+

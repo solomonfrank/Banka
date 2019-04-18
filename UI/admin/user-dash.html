@@ -28,7 +28,7 @@
                 <li>
                     <a href="#">my profile</a>
                 </li>
-                <li><a href="../user/signin.html">logout</a></li>
+                <li><a href="#">logout</a></li>
 
             </ul>
             <ul class="icon">
@@ -54,11 +54,12 @@
                 <a href="#"> <i class="far fa-address-book"></i>Profile</a>
             </li>
             <li>
-                <a href="../allUsers.html"><span class="fa fa-briefcase"></span> <span>View Users</span></a>
+                <a href="./allUsers.html"><span class="fa fa-briefcase"></span> <span>View Users</span></a>
             </li>
             <li>
                 <a href="./allStaff.html"><i class="fas fa-user-cog"></i> <span>Staff</span></a>
             </li>
+
             <li>
                 <a href="../user/signin.html"><i class="fas fa-arrow-circle-left"></i> <span>Logout</span></a>
             </li>
@@ -68,7 +69,7 @@
         <div class="sidebar">
             <ul>
                 <li>
-                    <a href="./admin-dash.html"> <i class="fas fa-archway"></i>Admin</a>
+                    <a href="#"> <i class="fas fa-archway"></i>Admin</a>
                 </li>
                 <li>
                     <a href="#"><span class="fa fa-user"></span> <span>profile</span></a>
@@ -87,64 +88,32 @@
             </ul>
         </div>
         <div class="content">
-            <div class="transaction-wrapper">
-                <div class="transactions">
-                    <div class="transaction-title">
-                        <h3>USERS</h3>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="table-header">Name</th>
-                                <th class="table-header">Account No</th>
-
-                                <th class="table-header">status</th>
-                                <th class="table-header">Balance</th>
-                                <th class="table-header">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <td>Rock Enwerem</td>
-                                <td>73773737</td>
-                                <td><a href="#">Activated</a></td>
-                                <td>1000</td>
-
-                                <td><a href="#">Delete</a>
-                                    <ahref="./user-dash.html">View </a> </td> </tr> <tr>
-                                <td>Rock Enwerem</td>
-                                <td>73773737</td>
-                                <td><a href="#">Activated</a></td>
-                                <td>1000</td>
-
-                                <td><a href="#">Delete</a> <a href="./user-dash.html">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>Rock Enwerem</td>
-                                <td>73773737</td>
-                                <td><a href="#">Activated</a></td>
-                                <td>1000</td>
-
-                                <td><a href="#">Delete</a> <a href="./user-dash.html">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>Rock Enwerem</td>
-                                <td>73773737</td>
-                                <td><a href="#">Activated</a></td>
-                                <td>1000</td>
-
-                                <td><a href="#">Delete</a> <a href="./user-dash.html">View</a></td>
-                            </tr>
+            <div class="form-search-wrapper">
+                <div class="form-search">
+                    <form action="#">
+                        <input type="text" placeholder="Enter  User Account Number">
+                        <input type="submit" value="Search">
+                    </form>
 
 
-                        </tbody>
-                    </table>
+                </div>
+            </div>
+
+            <div class="account-balance-wrapper">
+                <div class="account-profile-image"><img src="../img/person.png"></div>
+                <div class="account-balance">
+                    <h4>ROCK ENWEREM : SAVINGS</h4>
+
+                    <h3>N10000000000</h3>
+                    <span>Active</span>
+
+                    <p>Last seen:29th March 2019</p>
                 </div>
             </div>
 
 
-        </div>
+
+
 </body>
 <footer></footer>
 

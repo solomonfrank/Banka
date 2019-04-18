@@ -21,14 +21,14 @@
             </ul>
 
             <ul class="navbar-right">
-                <li><a href="#">Rock Enwerem</a></li>
+                <li><a href="#">Rock(Cashier)</a></li>
                 <li>
                     <a href="#">Notif</a>
                 </li>
                 <li>
                     <a href="#">my profile</a>
                 </li>
-                <li><a href="../user/signin.html">logout</a></li>
+                <li><a href="#">logout</a></li>
 
             </ul>
             <ul class="icon">
@@ -45,7 +45,7 @@
     <div class="sidebar-small">
         <ul>
             <li>
-                </i><a href="#"> <i class="fas fa-archway"></i>Admin</a>
+                </i><a href="./cashier-dash.html"> <i class="fas fa-archway"></i> Cashier</a>
             </li>
             <li>
                 <a href="#"> <a href="#"><i class="fas fa-bell"></i>Notification</a>
@@ -53,12 +53,8 @@
             <li>
                 <a href="#"> <i class="far fa-address-book"></i>Profile</a>
             </li>
-            <li>
-                <a href="../allUsers.html"><span class="fa fa-briefcase"></span> <span>View Users</span></a>
-            </li>
-            <li>
-                <a href="./allStaff.html"><i class="fas fa-user-cog"></i> <span>Staff</span></a>
-            </li>
+
+
             <li>
                 <a href="../user/signin.html"><i class="fas fa-arrow-circle-left"></i> <span>Logout</span></a>
             </li>
@@ -68,17 +64,13 @@
         <div class="sidebar">
             <ul>
                 <li>
-                    <a href="./admin-dash.html"> <i class="fas fa-archway"></i>Admin</a>
+                    <a href="./cashier-dash.html"> <i class="fas fa-archway"></i>Cashier</a>
                 </li>
                 <li>
                     <a href="#"><span class="fa fa-user"></span> <span>profile</span></a>
                 </li>
-                <li>
-                    <a href="./allUsers.html"><i class="fas fa-user-friends"></i><span>Users</span></a>
-                </li>
-                <li>
-                    <a href="./allStaff.html"><i class="fas fa-user-cog"></i> <span>Staff</span></a>
-                </li>
+
+
 
                 <li>
                     <a href="#"><span class="fa fa-envelope"></span> <span>Support</span></a>
@@ -87,20 +79,30 @@
             </ul>
         </div>
         <div class="content">
+            <div class="form-search-wrapper">
+                <div class="form-search">
+                    <form action="#">
+                        <input type="text" placeholder="Enter  User Account Number">
+                        <input type="submit" value="Search">
+                    </form>
+
+
+                </div>
+            </div>
             <div class="transaction-wrapper">
                 <div class="transactions">
                     <div class="transaction-title">
-                        <h3>USERS</h3>
+                        <h3>User found</h3>
                     </div>
                     <table>
                         <thead>
                             <tr>
                                 <th class="table-header">Name</th>
                                 <th class="table-header">Account No</th>
-
                                 <th class="table-header">status</th>
                                 <th class="table-header">Balance</th>
-                                <th class="table-header">Action</th>
+
+                                <th class="table-header">Transaction Type</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -108,45 +110,120 @@
                             <tr>
                                 <td>Rock Enwerem</td>
                                 <td>73773737</td>
-                                <td><a href="#">Activated</a></td>
+                                <td><a>Active</a></td>
                                 <td>1000</td>
+                                <td><a class="dropdown-btn" href='#'>Transact <i class="fa fa-caret-down"></i>
 
-                                <td><a href="#">Delete</a>
-                                    <ahref="./user-dash.html">View </a> </td> </tr> <tr>
-                                <td>Rock Enwerem</td>
-                                <td>73773737</td>
-                                <td><a href="#">Activated</a></td>
-                                <td>1000</td>
 
-                                <td><a href="#">Delete</a> <a href="./user-dash.html">View</a></td>
+                                    </a>
+                                    <ul class="dropdown">
+                                        <li class="credit">credit</li>
+                                        <li class="debit">
+                                            debit</li>
+                                    </ul>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>Rock Enwerem</td>
-                                <td>73773737</td>
-                                <td><a href="#">Activated</a></td>
-                                <td>1000</td>
-
-                                <td><a href="#">Delete</a> <a href="./user-dash.html">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>Rock Enwerem</td>
-                                <td>73773737</td>
-                                <td><a href="#">Activated</a></td>
-                                <td>1000</td>
-
-                                <td><a href="#">Delete</a> <a href="./user-dash.html">View</a></td>
-                            </tr>
-
-
                         </tbody>
                     </table>
                 </div>
             </div>
+        </div>
+
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content" id="modal-wrap">
+                <span class="close">&times;</span>
 
 
+                <div class="inner-form-wrap">
+
+                    <form id="form1" method="POST" action="#">
+
+
+                        <div class="form-group">
+
+
+                            <div class="form-input">
+                                <input id="amount" type="text" class="form-control"
+                                    placeholder="Enter amount to credit">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+
+
+                            <input id="form-submit" type="submit" class="form-submit" value="Credit">
+
+
+                        </div>
+
+
+
+
+                </div>
+
+
+
+
+                </form>
+
+
+
+
+
+            </div>
+        </div>
+
+        <div id="myModal" class="modal-debit">
+
+            <!-- Modal content -->
+            <div class="modal-content" id="modal-wrap">
+                <span id="close-debit" class="close">&times;</span>
+
+
+                <div class="inner-form-wrap">
+
+                    <form id="form1" method="POST" action="#">
+
+
+                        <div class="form-group">
+
+
+                            <div class="form-input">
+                                <input id="amount" type="text" class="form-control" placeholder="Enter amount to debit">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+
+
+                            <input id="form-submit" type="submit" class="form-submit" value="Debit">
+
+
+                        </div>
+
+
+
+
+                </div>
+
+
+
+
+                </form>
+
+
+
+
+
+            </div>
         </div>
 </body>
-<footer></footer>
+<footer>
+</footer>
 
 <script src="../js/user.js"></script>
 

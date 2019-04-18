@@ -136,6 +136,9 @@ li a {
 .open li {
 	margin-left:13px;
 }
+.open li:last-child{
+	margin-right:20px;
+}
 .other-pack{
 	margin-left:30%;
 	margin-top:18%;
@@ -676,7 +679,7 @@ figure{
 	background-color:red;
 	padding:15px 18px;
 	border-radius:5px;
-	margin-left:170px;
+	margin-left:200px;
 	
 
 	

@@ -15,7 +15,7 @@
 		<header class="top-header">
 			<nav class="top-nav-wrapper">
 				<div class="navbar-brand-left">
-					<a href="#">support@banka.com | +2348160430181</a>
+					<a href="../../index.html">support@banka.com | +2348160430181</a>
 				</div>
 				<div class="navbar-menu">
 					<ul class="user-entry-list">
@@ -69,7 +69,7 @@
 						<div class="form-title-alias">
 							<h3> Enjoy Secure data with us! </h3>
 						</div>
-						<form id="form1" method='post' action="./user-create-account.html">
+						<form id="form1" method='get'>
 
 
 							<div class="form-group">
@@ -95,11 +95,11 @@
 
 							<div class="form-group">
 								<div class="remember-wrapper">
-									<button type="submit" name="login" class="btn">
+									<button type="submit" name="login" class="btn-submit">
 										Login
 									</button>
 
-									<a class="btn btn-link" href="http://localhost:5000/password/reset">
+									<a class="btn btn-link" href="http://localhost:8000/password/reset">
 										Forgot Your Password?
 									</a>
 								</div>
@@ -128,7 +128,30 @@
 
 
 </body>
+<script>
+	const submitBtn = document.querySelector('.btn-submit');
+	submitBtn.addEventListener('click', event => {
+		let val = document.querySelector('#email').value;
 
+		console.log(val);
+		typeof (val);
+
+
+		if (val === 'staff@banka.com') {
+			window.location.href = 'https://solomonfrank.github.io/UIs/UI/admin/dashboard.html';
+		} else if (val === 'cashier@banka.com') {
+			window.location.href = 'https://solomonfrank.github.io/UIs/UI/cashier/dashboard.html';
+		} else {
+			window.location.href = 'https://solomonfrank.github.io/UIs/UI/user/user-create-account.html';
+		}
+		event.preventDefault();
+
+
+		//alert(val);
+
+	});
+
+</script>
 
 <script src="../js/main.js"></script>
 

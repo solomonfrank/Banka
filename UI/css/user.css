@@ -30,7 +30,9 @@ img {
   z-index: 9999999999;
   width: 100%;
 }
-
+a{
+  color:white;
+}
 .navbar-item-left {
   flex-basis: 50%;
   list-style-type: none;

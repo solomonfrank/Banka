@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import express from 'express';
 import Joi from 'joi';
 import session from 'express-session';
@@ -14,9 +13,9 @@ import { usersAccount } from '../model/database';
 const router = express.Router();
 
 const app = express();
-// eslint-disable-next-line no-use-before-define
+
 app.use(bodyParser.json());
-// eslint-disable-next-line no-use-before-define
+
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -67,8 +66,6 @@ router.post('/sign-up', (req, res) => {
   const person = new User(firstName, lastName, password, email);
 
   const userDetail = person.save();
-
-
   // eslint-disable-next-line consistent-return
   if (!userDetail) return res.status(400).json({ status: 400, msg: 'error in the values your submitted' });
   res.status(200).json({ status: 200, data: userDetail });
@@ -96,6 +93,7 @@ router.post('/sign-in', (req, res) => {
   const { password } = req.body;
 
   const user = User.login(email, password);
+
   // eslint-disable-next-line consistent-return
   if (!user) return res.status(400).json({ status: 400, msg: 'invalid credential' });
 
@@ -164,6 +162,7 @@ router.get('/logout', (req, res) => {
 
 // delete user route
 
+
 // eslint-disable-next-line consistent-return
 router.delete('/accounts/:accountNumber', (req, res) => {
   if (session.staffId && session.loggedIn) {
@@ -185,6 +184,7 @@ router.delete('/accounts/:accountNumber', (req, res) => {
 });
 
 // fetch user
+// eslint-disable-next-line consistent-return
 router.get('/accounts/:accountNumber', (req, res) => {
   if (session.type !== 'client') {
     if ((session.staffId !== '' || session.cashierId !== '') && session.loggedIn) {
@@ -205,6 +205,7 @@ router.get('/accounts/:accountNumber', (req, res) => {
   }
 });
 // patch user
+
 // eslint-disable-next-line consistent-return
 router.patch('/accounts/:accountNumber', (req, res) => {
   const acc = parseInt(req.params.accountNumber, 10);
@@ -292,6 +293,7 @@ router.post('/add-admin', (req, res) => {
 });
 
 // credit account
+// eslint-disable-next-line consistent-return
 router.post('/transaction/:accountNumber/credit', (req, res) => {
   if ((session.cashierId || session.staffId) && session.loggedIn) {
     const accNum = parseInt(req.params.accountNumber, 10);
@@ -318,6 +320,7 @@ router.post('/transaction/:accountNumber/credit', (req, res) => {
 });
 
 // debit account
+// eslint-disable-next-line consistent-return
 router.post('/transaction/:accountNumber/debit', (req, res) => {
   if ((session.cashierId || session.staffId) && session.loggedIn) {
     const accNum = parseInt(req.params.accountNumber, 10);
@@ -344,6 +347,7 @@ router.post('/transaction/:accountNumber/debit', (req, res) => {
 
 // fetch all account
 
+// eslint-disable-next-line consistent-return
 router.get('/accounts', (req, res) => {
   if (session.staffId && session.loggedIn) {
     const admin = new Admin();

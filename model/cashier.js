@@ -1,5 +1,5 @@
 // const User = require("./user").default;
-import User from "./user";
+import User from './user';
 // const cashier = require("./cashier");
 // const session = require("express-session");
 
@@ -20,8 +20,8 @@ class Cashier extends User {
     return {
       ...found,
       cashier,
-      transactionType: "debit",
-      transactionId: Math.floor(Math.random() * 1000000)
+      transactionType: 'debit',
+      transactionId: Math.floor(Math.random() * 1000000),
     };
   }
 
@@ -35,8 +35,8 @@ class Cashier extends User {
     return {
       ...found,
       cashier,
-      transactionType: "credit",
-      transactionId: Math.floor(Math.random() * 1000000)
+      transactionType: 'credit',
+      transactionId: Math.floor(Math.random() * 1000000),
     };
   }
 }

@@ -1,5 +1,5 @@
 
-body{
+body,html{
 	margin:0;
 	padding:0;
 	  overflow-x: hidden;
@@ -7,7 +7,10 @@ body{
   background-color:rgba(235, 235, 235,0.4);
 	box-sizing:border-box;
 	color:rgb(76, 38, 34);
-	font-size:17px;
+	font-size:28px;
+}
+body{
+	overflow-y:hidden;
 }
 
 .top-title{
@@ -86,9 +89,6 @@ li a {
 	padding-top:-90px;
 }
 
-.second-nav {
-	 padding: 20px;
-}
 
 .menu-list{
 	float:left;
@@ -401,7 +401,7 @@ font:15px 1.5 arial san serif
 	}
 	.open{
 		
-		margin-top:-90px;
+		margin-top:-125px;
 	}
 	.wrapper-ways-to-bank{
 	
@@ -435,7 +435,7 @@ font:15px 1.5 arial san serif
 		display:block;
 	
 		width:40px;
-		margin-top:33px;
+		margin-top:43px;
 	
 	}
 	.icon li{
@@ -668,7 +668,7 @@ button:hover{
 		display:block;
 	
 		width:40px;
-		margin-top:25px;
+		margin-top:40px;
 		
 	}
 	.icon li{
@@ -710,7 +710,7 @@ button:hover{
 		display:none;
 	}
 	.open{
-		margin-top:-74px;
+		margin-top:-85px;
 		margin-right:100px;
 		border:0;
 	}
@@ -909,7 +909,7 @@ button:hover{
 		
 	}
 	.open{
-		margin-top:-70px;
+		margin-top:-90px;
 	
 	}
 	
@@ -1141,7 +1141,7 @@ button:hover{
 	}
 	.open{
 		
-		margin-top:-70px;
+		margin-top:-95px;
 	}
 
 	 

@@ -6,7 +6,11 @@ body {
     background-color: rgba(235, 235, 235, 0.4);
     box-sizing: border-box;
   }
+  i{
+    color:white;
+  }
   
+
   img {
     width: 25px;
     height: 25px;
@@ -14,10 +18,12 @@ body {
   .navbar-right .icon {
     display: none;
   }
-  
+  a {
+    font-size:18px;
+  }
   .navbar-wrapper {
     position: fixed;
-    background-color: blue;
+    background-color:rgb(76, 38, 34);
     color: white;
   
     z-index: 9999999999;
@@ -119,19 +125,23 @@ body {
     text-align:center;
 }
 .form-input  input{
-  width:90%;
-  
+ 
+  width:93%;
       padding:10px;
-      border:1px solid rgba(5, 116, 234,1);
+      border:1px solid rgb(76, 38, 34);
       border-radius:3px;
   
   
 }
-select{
+
+.form-input{
   width:100%;
-  
+}
+select{
+ 
+    width:95%;
       padding:10px;
-      border:1px solid rgba(5, 116, 234,1);
+      border:1px solid rgb(76, 38, 34);
       border-radius:3px;
   
   
@@ -145,22 +155,71 @@ select{
     padding:0;
 }
 .form-label{
-  font-size:17px;
+  font-size:20px;
+  color:white;
   
 }
 .form-group{
   margin-bottom:10px;
 }
 button{
-  background-color:rgba(5, 116, 234,1);
-   color:white;
+ 
+  
       text-align:center;
       padding:15px;
       border-radius:5px;
       font-size:22px;
       line-height:0.5rem;
+      border:1px solid white;
+      background-color:green;
+      width:95%;
+      border:none;
   
     
+}
+
+ /* The Modal (background) */
+ .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color:rgba(76, 38, 34,0.9);;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.side ul li a:hover{
+  background-color:rgb(76, 38, 34);
+  color:white;
 }
   @media screen and (max-width: 600px) {
      
@@ -171,7 +230,7 @@ button{
       height: 100%;
       position: fixed;
       z-index: 9999999;
-      background-color: rgb(65, 172, 213);
+     	background-color:rgba(76, 38, 34,0.8);
       position: fixed;
     }
     .side ul {
@@ -185,8 +244,10 @@ button{
     .side ul li a {
       text-decoration: none;
       color: white;
-      font-size: 19px;
+      font-size: 25px;
+      margin-left:10px;
     }
+    
     .wrap-form {
       display: none;
     }
@@ -198,7 +259,8 @@ button{
       float: right;
       margin-top: 20px;
     }
- 
+   
+   
   }
   
   @media screen and (min-width: 600px) {
@@ -209,13 +271,17 @@ button{
       height: 100%;
       position: fixed;
       z-index: 9999999;
-      background-color: rgb(65, 172, 213);
+      background-color:rgba(76, 38, 34,0.8);
       position: fixed;
     }
     .side ul li a {
       text-decoration: none;
       color: white;
-      font-size: 19px;
+      font-size: 25px;
+      padding:10px;
+    }
+    .side ul li{
+      padding:10px 5px;
     }
     .side ul {
       margin-top: 100px;
@@ -256,7 +322,7 @@ button{
       height: 100%;
       position: fixed;
       z-index: 9999999;
-      background-color: rgb(65, 172, 213);
+      background-color:rgba(76, 38, 34,0.8);
       position: fixed;
     }
     .side ul {
@@ -275,13 +341,27 @@ button{
   
   @media screen and (min-width: 990px) {
 
+.modal-content{
+  width:600px;
+}
+    .form-input  input{
+ 
+      width:93%;
+          padding:10px;
+          border:1px solid rgb(76, 38, 34);
+          border-radius:3px;
+      
+      
+    }
+    
+    .form-input{
+      width:100%;
+    }
 
-     select{
-         width: 92%;
-     }
+
     .sidebar-small {
       display: none;
-      background-color: rgb(65, 172, 213);
+      	background-color:rgba(76, 38, 34,0.3);
     }
   
     .wrap-form {
@@ -318,60 +398,26 @@ button{
   }
 
   .account-container p{
-      line-height:15px;
+      line-height:30px;
       text-align:center;
-      font-size:20px;
+      font-size:25px;
       
   }
-  .account-container a{
+  .account-container a:hover{
+    background-color:rgb(76, 38, 34);
     color:white;
-    background-color:rgba(5, 116, 234,1);
+  }
+  .account-container a{
+    color:rgb(76, 38, 34);
+   
     padding: 10px;
     border-radius:3px;
     text-decoration: none;
-    margin-left:35%;
-    font-size:18px;
+    margin-left:20%;
+    font-size:25px;
+    border:2px solid rgb(76, 38, 34);
     
   }
-
-
-  /* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
+ 
 
  

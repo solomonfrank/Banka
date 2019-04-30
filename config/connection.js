@@ -1,31 +1,31 @@
 
 
 import { Pool } from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 
 class Db {
   constructor() {
-    this.pool = new Pool({
-      user: 'postgres',
-      password: 'ifeyinwa5',
-      host: 'localhost',
-      database: 'Banka',
+    this.conn = new Pool({
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      host: process.env.HOST,
+      database: process.env.DB_NAME,
     });
-
-    return (async () => {
-      this.conn = await this.pool.connect(); // checkout a client
-      console.log('connected');
-      return this.conn;
-    })();
+    return this.conn;
   }
 
-  static async getInstance(queryText) {
-    this.client = await new Db();
-    this.result = await this.client.query(queryText);
-    this.client.end();
+  static async getInstance() {
+    this.pool = new Db();
 
-    console.log(this.result);
+
+    return this.pool;
+
+    // console.log(this.client);
   }
+
 
   static createUsersTable() {
     this.createTableQuery = `

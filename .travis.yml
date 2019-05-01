@@ -9,7 +9,7 @@ addons:
     REPO_TOKEN : process.env.CODE_CLIMATE
 script:
  - npm run test
- - istanbul cover node_modules/mocha/bin/_mocha -- -R spec
+ - istanbul cover npm run test -- -R spec
 before_script:
  - npm install codeclimate-test-reporter istanbul
 after_script:

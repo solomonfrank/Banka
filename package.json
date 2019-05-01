@@ -7,11 +7,10 @@
     "node": "10.14.1"
   },
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text mocha test/*.js -r @babel/polyfill -r @babel/register --timeout 5000",
+    "test": "nyc --reporter=html --reporter=text mocha tests/*.js  --recursive -r @babel/polyfill -r @babel/register --exit",
     "start": "nodemon --exec babel-node index.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc --reporter=text-lcov --reporter=text-summary npm test"
   },
   "repository": {
     "type": "git",
@@ -44,6 +43,7 @@
     "nodemon": "^1.18.11",
     "nyc": "^13.3.0",
     "package.json": "^2.0.1",
+    "pg": "^7.10.0",
     "prettier": "^1.16.4",
     "sessionstorage": "^0.1.0",
     "uuid": "^3.3.2"

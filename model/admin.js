@@ -8,15 +8,7 @@ class Admin extends User {
     // eslint-disable-next-line no-console
 
     const found = accArray.find(user => user.accNumber === acc);
-    // let found = accArray.indexOf(acc)
-    /* if(found === -1){
-        return false;
-    }else{
-        let found = accArray.filter(user => user.accNumber !== acc);
-        return found;
-    }
 
-    */
     if (!found) {
       return false;
     }
@@ -24,6 +16,7 @@ class Admin extends User {
     const index = accArray.indexOf(found);
     return accArray.splice(index, 1);
   }
+
 
   // eslint-disable-next-line class-methods-use-this
   activateAcc(acc, accountArr) {

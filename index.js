@@ -9,8 +9,6 @@ import router from './routes/route';
 import Model from './models/Model';
 
 dotenv.config();
-const model = new Model('users');
-model.findAll('*');
 
 
 // import router from "./routes/route";

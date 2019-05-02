@@ -51,7 +51,7 @@ class Model {
     console.log(this.queryText);
     const client = await pool;
 
-    return client.query(`${this.queryText}`, this.values);
+    return client.query(`${this.queryText}`, [this.values]);
   }
 
   async update(id, params) {
@@ -84,5 +84,6 @@ class Model {
 
     return client.query(`${this.sql}`, [this.values]);
   }
+
 }
 export default Model;

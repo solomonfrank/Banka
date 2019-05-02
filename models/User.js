@@ -1,10 +1,12 @@
 
-import Model from './Model';
 import Db from '../config/connection';
+import Model from './Model';
 
 class User extends Model {
-  constructor(modelName = 'users') {
-    super(modelName);
+  constructor(modelType = 'users') {
+    super(modelType);
+
+
   }
 }
 

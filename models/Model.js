@@ -15,28 +15,16 @@ class Model {
 
     this.sql = `SELECT  ${this.field} FROM ${this._table} WHERE id = $1`;
     const client = await pool;
-    try {
-      const result = await client.query(`${this.sql}`, [this.id]);
-      console.log(result.rows);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      await client.end();
-    }
+
+    return client.query(`${this.sql}`, [this.id]);
   }
 
   async findAll(field) {
     this.field = field;
     this.sql = `SELECT ${this.field} FROM ${this._table}`;
     const client = await pool;
-    try {
-      const result = await client.query(`${this.sql}`);
-      console.log(result.rows);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      await client.end();
-    }
+
+    return client.query(`${this.sql}`);
   }
 
   async insert(params) {
@@ -62,14 +50,8 @@ class Model {
     this.queryText = `INSERT INTO ${this._table} (${this.fieldString}) VALUES (${this.fieldValue})`;
     console.log(this.queryText);
     const client = await pool;
-    try {
-      const result = await client.query(`${this.queryText}`, this.values);
-      console.log(result);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      await client.end();
-    }
+
+    return client.query(`${this.queryText}`, this.values);
   }
 
   async update(id, params) {
@@ -90,21 +72,17 @@ class Model {
     this.fieldString = this.fieldString.trimEnd().slice(0, -1);
     this.sql = `UPDATE ${this._table} SET ${this.fieldString} WHERE id  = $1`;
     const client = await pool;
-    try {
-      const result = await client.query(`${this.sql}`, this.values);
-      console.log(result);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      await client.end();
-    }
+
+    return client.query(`${this.sql}`, [this.values]);
   }
 
-  static delete(id) {
+  async delete(id) {
     this.id = id;
 
     this.sql = `DELETE FROM ${this._table} WHERE id= $1`;
-    console.log(this.sql);
+    const client = await pool;
+
+    return client.query(`${this.sql}`, [this.values]);
   }
 }
 export default Model;

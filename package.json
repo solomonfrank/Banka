@@ -46,6 +46,7 @@
     "pg": "^7.10.0",
     "prettier": "^1.16.4",
     "sessionstorage": "^0.1.0",
+    "travis": "^0.1.1",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -53,6 +54,7 @@
     "chai-http": "^4.2.1",
     "chai-like": "^1.1.1",
     "chai-things": "^0.2.0",
+    "codeclimate-test-reporter": "^0.5.1",
     "coveralls": "^3.0.3",
     "debug": "^4.1.1",
     "eslint": "^5.16.0",

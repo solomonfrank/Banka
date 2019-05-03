@@ -20,9 +20,6 @@ class Model {
   }
 
   async findAll(field) {
-
-
-
     this.field = field;
     this.sql = `SELECT ${this.field} FROM ${this._table}`;
     const client = await pool;
@@ -87,6 +84,5 @@ class Model {
 
     return client.query(`${this.sql}`, [this.values]);
   }
-
 }
 export default Model;

@@ -22,5 +22,9 @@ class Account extends Model {
 
     return client.query(`${this.sql}`, [this.id]);
   }
+
+  static init() {
+    return new Account();
+  }
 }
 export default Account;

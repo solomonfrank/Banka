@@ -6,7 +6,9 @@ import dotenv from 'dotenv';
 import Db from './config/connection';
 // import pool from './config/connection';
 import router from './routes/route';
+
 import Model from './models/Model';
+
 
 dotenv.config();
 

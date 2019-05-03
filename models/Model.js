@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import Db from '../config/connection';
 
-
 const pool = Db.getInstance();
+
 class Model {
   constructor(table) {
     // eslint-disable-next-line no-underscore-dangle
@@ -26,6 +26,9 @@ class Model {
   }
 
   async findAll(field) {
+
+
+
     this.field = field;
     this.sql = `SELECT ${this.field} FROM ${this._table}`;
     const client = await pool;

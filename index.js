@@ -3,6 +3,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import router from './routes/route';
+import Transact from './models/Transaction';
+//import Db from './config/connection';
+
+//const trans = new Model();
+const trans = Transact.init().findAll('*');
+
+
 
 dotenv.config();
 

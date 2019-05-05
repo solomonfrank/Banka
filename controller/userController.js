@@ -8,6 +8,9 @@ import User from '../models/User';
 import Validation from '../helpers/Validation';
 import Response from '../helpers/Response';
 
+import Auth from '../helpers/Auth';
+
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -40,13 +43,20 @@ class UserController {
     try {
       const result = await User.init().insert(body);
 
+      const payload = {
+        UserId: result.rows[0].id,
+
+      };
+
+      result.rows[0].token = await Auth.generateToken(payload);
+
       return Response.onSuccess(res, 201, result.rows[0]);
     } catch (error) {
       if (error.routine === '_bt_check_unique') {
         return Response.onError(res, 400, 'email already exist');
       }
 
-      return Response.onError(res, 400, 'internal Server Error');
+      return Response.onError(res, 500, 'internal Server Error');
     }
 
     // console.log(result);

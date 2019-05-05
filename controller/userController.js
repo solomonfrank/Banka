@@ -48,6 +48,8 @@ class UserController {
 
       return Response.onError(res, 400, 'internal Server Error');
     }
+
+    // console.log(result);
   }
 }
 

@@ -24,7 +24,6 @@ app.use(
 class UserController {
   static async signup(req, res) {
     const schema = Validation.init().validateRegister();
-
     const clean = Joi.validate(req.body, schema);
     if (clean.error) {
       return Response.onError(res, 400, clean.error.details[0].message);
@@ -60,6 +59,41 @@ class UserController {
     }
 
     // console.log(result);
+  }
+
+  static async signin(req, res) {
+    const schema = Validation.init().validateSignin();
+    const clean = Joi.validate(req.body, schema);
+    if (clean.error) {
+      return Response.onError(res, 400, clean.error.details[0].message);
+    }
+    const { email, password } = clean.value;
+    const body = { email };
+    try {
+      const result = await User.init().find(body);
+      if (!result.rows[0]) {
+        return Response.onError(res, 400, 'invalid credential');
+      }
+      const hashPassword = result.rows[0].password;
+      const pass = await Validation.init().verifyPassword(password, hashPassword);
+      if (!pass) {
+        return Response.onError(res, 400, 'invalid email or password');
+      }
+      const payload = {
+        id: result.rows[0].id,
+        type: result.rows[0].type,
+
+      };
+      result.rows[0].token = await Auth.generateToken(payload);
+
+      return Response.onSuccess(res, 200, result.rows[0]);
+    } catch (error) {
+      return Response.onError(res, 500, 'internal server error');
+    }
+  }
+
+  static async create(req, res) {
+    return Response.onError(res, 500, req.userData);
   }
 }
 

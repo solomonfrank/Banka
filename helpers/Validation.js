@@ -53,5 +53,11 @@ class Validation {
     this.plainPassword = password;
     return bcrypt.hash(this.plainPassword, this.saltRounds);
   }
+
+  async verifyPassword(password, hash) {
+    this.hash = hash;
+    this.plainPassword = password;
+    return bcrypt.compare(this.plainPassword, this.hash);
+  }
 }
 export default Validation;

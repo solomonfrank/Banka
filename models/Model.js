@@ -19,6 +19,19 @@ class Model {
     return client.query(`${this.sql}`, [this.id]);
   }
 
+  async find(fieldObject, field = '*') {
+    this.fieldArray = Object.keys(fieldObject);
+    [this.fieldName] = this.fieldArray;
+
+    this.fieldValue = Object.values(fieldObject);
+    this.field = field;
+
+
+    this.sql = `SELECT ${this.field} FROM ${this.table} WHERE ${this.fieldName} = $1 `;
+    const client = await pool;
+    return client.query(`${this.sql}`, this.fieldValue);
+  }
+
   async findAll(field) {
     this.field = field;
     this.sql = `SELECT ${this.field} FROM ${this._table}`;
@@ -47,11 +60,11 @@ class Model {
     this.fieldString = this.fieldString.trim().slice(0, -1);
     this.fieldValue = this.fieldValue.trim().slice(0, -1);
 
-    this.queryText = `INSERT INTO ${this._table} (${this.fieldString}) VALUES (${this.fieldValue})`;
-    console.log(this.queryText);
+    this.queryText = `INSERT INTO ${this._table} (${this.fieldString}) VALUES (${this.fieldValue}) RETURNING *`;
+
     const client = await pool;
 
-    return client.query(`${this.queryText}`, [this.values]);
+    return client.query(`${this.queryText}`, this.values);
   }
 
   async update(id, params) {

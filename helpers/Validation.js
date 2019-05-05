@@ -44,6 +44,14 @@ class Validation {
     return this.schema;
   }
 
+  validateSignin() {
+    this.schema = {
+      email: this.sanitizeEmail(),
+      password: this.sanitizePassword(),
+    };
+    return this.schema;
+  }
+
   static init() {
     return new Validation();
   }

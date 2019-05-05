@@ -2,12 +2,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-// import { REPL_MODE_SLOPPY } from 'repl';
-import Db from './config/connection';
-// import pool from './config/connection';
-import router from './routes/route';
-
-import Model from './models/Model';
+import UserController from './controller/userController';
+import Auth from './helpers/Auth';
 
 
 dotenv.config();
@@ -24,7 +20,11 @@ app.use(
   }),
 );
 // const debug = Debug("http");
-app.use('/api/v1', router);
+// app.use('/api/v1', router);
+app.post('/api/v1/signup', UserController.signup);
+app.post('/api/v1/signin', UserController.signin);
+app.post('/api/v1/create', Auth.verifyToken, UserController.create);
+
 
 // Set environment Port
 const PORT = process.env.PORT || 5000;

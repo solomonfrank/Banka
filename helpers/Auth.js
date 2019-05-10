@@ -16,12 +16,12 @@ const Auth = {
 
   // eslint-disable-next-line consistent-return
   async verifyToken(req, res, next) {
-    let token = req.headers['x-access-token'];
+    const token = req.headers['x-access-token'];
 
-    token = token.trim();
+    // token = token.trim();
 
     if (!token) {
-      return Response.onError(res, 400, 'Token not found');
+      return Response.onError(res, 400, 'Not authorize to access the page');
     }
     try {
       const decoded = await jwt.verify(token, process.env.SECRET_KEY);

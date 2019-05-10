@@ -1,13 +1,15 @@
 
 const Response = {
+
   onSuccess(res, statusCode, responseText) {
     const value = responseText;
     if (value.password) {
       delete value.password;
     }
+
     return (res.status(statusCode).json({
       status: statusCode,
-      data: value,
+      data: [value],
     })
     );
   },

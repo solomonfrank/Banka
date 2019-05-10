@@ -101,7 +101,8 @@ class UserController {
     }
 
     const { id } = req.userData;
-    // const user = await User.init().getById(id);
+    const user = await User.init().getById(id);
+    const { firstname: firstName, lastname: lastName, email } = user.rows[0];
 
 
     const {
@@ -123,7 +124,11 @@ class UserController {
     try {
       const result = await Account.init().insert(body);
 
-      return Response.onSuccess(res, 201, result.rows[0]);
+      const accDetail = {
+        ...result.rows[0], firstName, lastName, email,
+      };
+
+      return Response.onSuccess(res, 201, accDetail);
     } catch (err) {
       return Response.onError(res, 500, 'Internal server Error');
     }

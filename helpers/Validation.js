@@ -13,6 +13,10 @@ class Validation {
     return (Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/));
   }
 
+  sanitizePhone() {
+    return Joi.number();
+  }
+
   sanitizeConfirmPassword() {
     return (Joi.string().required().valid(Joi.ref('password')).options({
       language: {
@@ -48,6 +52,18 @@ class Validation {
     this.schema = {
       email: this.sanitizeEmail(),
       password: this.sanitizePassword(),
+    };
+    return this.schema;
+  }
+
+  validateCreateAccount() {
+    this.schema = {
+      phone: this.sanitizePhone(),
+      address: this.sanitizeName(),
+      type: this.sanitizeName(),
+      balance: Joi.number(),
+
+
     };
     return this.schema;
   }

@@ -14,6 +14,10 @@ class User extends Model {
   async findByEmail(param) {
     return super.find(param);
   }
+
+  async getById(id) {
+    return super.findById(id, '*');
+  }
 }
 
 

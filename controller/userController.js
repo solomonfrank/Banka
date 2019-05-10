@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 // import Db from '../config/connection';
 import Joi from 'joi';
 import User from '../models/User';
+import Account from '../models/Account';
 import Validation from '../helpers/Validation';
 import Response from '../helpers/Response';
 
@@ -93,8 +94,41 @@ class UserController {
   }
 
   static async create(req, res) {
-    return Response.onError(res, 500, req.userData);
+    const schema = Validation.init().validateCreateAccount();
+    const clean = Joi.validate(req.body, schema);
+    if (clean.error) {
+      return Response.onError(res, 400, clean.error.details[0].message);
+    }
+
+    const { id } = req.userData;
+    // const user = await User.init().getById(id);
+
+
+    const {
+      phone, address, balance, type,
+    } = clean.value;
+    const status = balance === 0 ? 'dormant' : 'active';
+
+    const accountNum = Math.floor((1 + Math.random()) * 1000000);
+    req.body.accountNum = accountNum;
+
+    const body = {
+      phone, address, balance, type, status,
+    };
+    body.userId = id;
+    body.status = status;
+    body.accountNum = accountNum;
+    body.createdOn = new Date();
+
+    try {
+      const result = await Account.init().insert(body);
+
+      return Response.onSuccess(res, 201, result.rows[0]);
+    } catch (err) {
+      return Response.onError(res, 500, 'Internal server Error');
+    }
   }
 }
+
 
 export default UserController;

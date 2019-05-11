@@ -33,8 +33,10 @@ class UserController {
     const {
       firstName, lastName, email, gender, password,
     } = clean.value;
+
+    const token = await Auth.generateToken(email);
     const body = {
-      firstName, lastName, email, gender, password,
+      firstName, lastName, email, gender, password, token,
     };
     body.password = await Validation.init().hashPassword(password);
     body.createdAt = new Date();
@@ -42,13 +44,6 @@ class UserController {
 
     try {
       const result = await User.init().insert(body);
-
-      const payload = {
-        UserId: result.rows[0].id,
-
-      };
-
-      result.rows[0].token = await Auth.generateToken(payload);
 
       return Response.onSuccess(res, 201, result.rows[0]);
     } catch (error) {

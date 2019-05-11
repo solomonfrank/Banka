@@ -14,13 +14,13 @@ class Account extends Model {
     this.field = field;
     this.account = accountNum;
 
-    this.sql = `SELECT accountNumber,type,balance,createdOn, useerId ,firstName, lastName,email FROM ${this._table}
-      JOIN ${this.userTable}
-      ON ${this._table}.userId = ${this._userTable}
-      WHERE accountNumber = $1`;
+    this.sql = `SELECT acc.accountnum,acc.type,acc.status,acc.balance,acc.createdOn, acc.userid ,u.id,u.firstname, u.lastname,u.email ,u.type FROM ${this._table} acc
+      JOIN ${this._userTable} u
+      ON acc.userid = u.id
+      WHERE accountnum = $1`;
     const client = await pool;
 
-    return client.query(`${this.sql}`, [this.id]);
+    return client.query(`${this.sql}`, [this.account]);
   }
 
   static init() {

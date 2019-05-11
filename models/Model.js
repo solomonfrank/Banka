@@ -83,7 +83,7 @@ class Model {
       this.x += 1;
       this.values.push(value);
     });
-    console.log(this.fieldString);
+
     this.fieldString = this.fieldString.trimEnd().slice(0, -1);
     this.sql = `UPDATE ${this._table} SET ${this.fieldString} WHERE accountnum  = ${this.accountnum} RETURNING *`;
     const client = await pool;

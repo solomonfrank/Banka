@@ -1,12 +1,14 @@
 
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import UserController from './controller/userController';
+import AdminController from './controller/adminController';
 import Auth from './helpers/Auth';
 
 
-// import router from './routes/route';
+import router from './routes/route';
 
 
 dotenv.config();
@@ -21,10 +23,12 @@ app.use(
   }),
 );
 // const debug = Debug("http");
-// app.use('/api/v1', router);
+app.use('/api/v1', router);
 app.post('/api/signup', UserController.signup);
 app.post('/api/signin', UserController.signin);
 app.post('/api/create', Auth.verifyToken, UserController.create);
+app.post('/api/create-admin', Auth.verifyToken, Auth.verifyCashier, AdminController.createAdmin);
+// app.get('/api/account/:accountNum',)
 
 
 // Set environment Port

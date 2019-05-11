@@ -48,6 +48,16 @@ class Validation {
     return this.schema;
   }
 
+  validateAdmin() {
+    const registerSchema = this.validateRegister();
+    this.schema = {
+      ...registerSchema,
+      isAdmin: Joi.bool().required(),
+      type: this.sanitizeName(),
+    };
+    return this.schema;
+  }
+
   validateSignin() {
     this.schema = {
       email: this.sanitizeEmail(),

@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 
 import jwt from 'jsonwebtoken';
 import Response from './Response';
@@ -41,6 +42,38 @@ const Auth = {
       next();
     } catch (err) {
       return Response.onError(res, 500, 'Internal server error');
+    }
+  },
+
+  async verifyCashier(req, res, next) {
+    const { id } = req.userData;
+    const param = { id };
+    try {
+      const result = await User.init().find(param);
+
+      if (result.rows[0].type !== 'cashier') {
+        return Response.onError(res, 403, 'forbidden');
+      }
+      req.userData = { id };
+      next();
+    } catch (error) {
+      return Response.onError(res, 500, 'server error');
+    }
+  },
+  async verifyStaff(req, res, next) {
+    const { id } = req.userData;
+    const param = { id };
+    try {
+      const result = await User.init().find(param);
+
+      const { type, isadmin: isAdmin } = result.rows[0];
+      if (type !== 'staff' && !isAdmin) {
+        return Response.onError(res, 403, 'forbidden');
+      }
+      req.userData = { id };
+      next();
+    } catch (error) {
+      return Response.onError(res, 500, 'server error');
     }
   },
 };

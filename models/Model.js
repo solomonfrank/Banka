@@ -68,7 +68,6 @@ class Model {
   }
 
   async update(accountNum, params) {
-
     this.fieldKey = Object.entries(params);
     this.valueArray = Object.values(params);
 

@@ -50,6 +50,17 @@ class StaffController {
       return Response.onError(res, 200, 'Internal server error');
     }
   }
+
+  static async deleteAccount(req, res) {
+    const { accountNum } = req.params;
+    try {
+      const result = await Account.init().delete(accountNum);
+
+      return Response.onSuccess(res, 200, 'Account delete successfully');
+    } catch (error) {
+      return Response.onError(res, 200, 'Internal server error');
+    }
+  }
 }
 
 

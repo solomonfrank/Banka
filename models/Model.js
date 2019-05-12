@@ -90,13 +90,13 @@ class Model {
     return client.query(`${this.sql}`, [this.values]);
   }
 
-  async delete(id) {
-    this.id = id;
+  async delete(accountNum) {
+    this.accountNum = accountNum;
 
-    this.sql = `DELETE FROM ${this._table} WHERE id= $1`;
+    this.sql = `DELETE FROM ${this._table} WHERE accountnum= $1 RETURNING *`;
     const client = await pool;
 
-    return client.query(`${this.sql}`, [this.values]);
+    return client.query(`${this.sql}`, [this.accountNum]);
   }
 }
 export default Model;

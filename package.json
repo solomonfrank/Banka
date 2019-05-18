@@ -47,6 +47,7 @@
     "pg": "^7.10.0",
     "prettier": "^1.16.4",
     "sessionstorage": "^0.1.0",
+    "swagger-ui-express": "^4.0.3",
     "travis": "^0.1.1",
     "uuid": "^3.3.2"
   },

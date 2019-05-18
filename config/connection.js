@@ -1,18 +1,17 @@
+/* eslint-disable no-console */
 
 
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
 dotenv.config();
+const connectionString = process.env.DATABASE_URL_LOCAL || process.env.DATABASE_URL;
 
 
 class Db {
   constructor() {
     this.conn = new Pool({
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      host: process.env.HOST,
-      database: process.env.DB_NAME,
+      connectionString,
     });
     return this.conn;
   }
@@ -39,10 +38,11 @@ class Db {
   password VARCHAR(128) NOT NULL,
   type VARCHAR(128) DEFAULT 'client',
   isAdmin BOOLEAN DEFAULT FALSE,
+  token TEXT NOT NULL,
   createdAt TIMESTAMP
   
   
-    )
+    );
     `;
 
     Db.getInstance(this.createTableQuery).catch(err => console.log(err));
@@ -53,16 +53,16 @@ class Db {
 CREATE TABLE IF NOT EXISTS
  account(
    id SERIAL PRIMARY KEY,
-   accountNumber INT UNIQUE NOT NULL,
-  
+   accountNum INT UNIQUE NOT NULL,
+   address TEXT NOT NULL,
    type VARCHAR NOT NULL,
    status VARCHAR NOT NULL,
-   balance TEXT NOT NULL,
+   balance FLOAT NOT NULL,
+   phone INT NOT NULL,
+
    createdOn  TIMESTAMP,
    userId INT REFERENCES users ON DELETE CASCADE
-
-
- )
+ );
 
 `;
 
@@ -79,10 +79,10 @@ CREATE TABLE IF NOT EXISTS
        accountNumber INT NOT NULL,
        userId INT REFERENCES users NOT NULL,
        cashierId INT REFERENCES users NOT NULL,
-       amount NUMERIC(10,2) NOT NULL,
-       oldBalance NUMERIC (10) NOT NULL,
-       newBalance NUMERIC(10) NOT NULL
-     )
+       amount FLOAT NOT NULL,
+       oldBalance FLOAT NOT NULL,
+       newBalance FLOAT NOT NULL
+     );
     `;
 
     Db.getInstance(this.queryText).catch(err => console.log(err));

@@ -71,6 +71,7 @@ class Model {
     this.fieldKey = Object.entries(params);
     this.valueArray = Object.values(params);
 
+
     this.x = 1;
     this.accountnum = accountNum;
     this.fieldString = '';
@@ -85,9 +86,10 @@ class Model {
 
     this.fieldString = this.fieldString.trimEnd().slice(0, -1);
     this.sql = `UPDATE ${this._table} SET ${this.fieldString} WHERE accountnum  = ${this.accountnum} RETURNING *`;
+
     const client = await pool;
 
-    return client.query(`${this.sql}`, [this.values]);
+    return client.query(`${this.sql}`, this.values);
   }
 
   async delete(accountNum) {

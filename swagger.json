@@ -1,0 +1,170 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Banka APi",
+        "version": "1.0.0",
+        "description": "Banka is a light weight bank application for performing simple banka service like credit, debit and account creation.",
+        "contact": "solomonfrank73@hotmail.com",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:5000",
+    "basepath": "",
+    "tags": [
+        {
+            "name": "user",
+            "description": "API for user entity"
+        },
+        {
+            "name": "account",
+            "description": " API for account entity"
+        },
+        {
+            "name": "transaction",
+            "description": "API for transaction entity"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "security": [
+        {
+            "Authorization": []
+        }
+    ],
+    "paths": {
+        "/api/signin": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "sign in user",
+                "description": "User can login using this endpoint.",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Login user object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/loginModel"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successfully loggedin",
+                        "schema": {
+                            "type": "object",
+                            "example": {
+                                "status": 200,
+                                "data": [
+                                    {
+                                        "id": 1,
+                                        "firstname": "john",
+                                        "lastname": "edy",
+                                        "gender": "male",
+                                        "email": "test1@yahoo.com",
+                                        "type": "client",
+                                        "isadmin": false,
+                                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOnsiaWQiOjEsInR5cGUiOiJjbGllbnQifSwiaWF0IjoxNTU4MTY5NTk5fQ.4op2chN0TlU48pMsOROytD4xVrbraE6_6gXfrU-fevc",
+                                        "createdat": "2019-05-11T16:42:46.897Z"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "api/signup": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": " user can sign up",
+                "description": "User can login using this endpoint.",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User's should be able to sign up",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/signUpModel"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": " signup was successful"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "loginModel": {
+            "type": "objects",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "signUpModel": {
+            "type": "objects",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "confirmPassword": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                }
+            }
+        },
+        "loginOutput": {
+            "type": "object",
+            "properties": {
+                "status": "string",
+                "data": "object"
+            }
+        }
+    }
+}

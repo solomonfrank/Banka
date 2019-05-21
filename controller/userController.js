@@ -43,7 +43,9 @@ class UserController {
 
 
     try {
+      console.log(body);
       const result = await User.init().insert(body);
+      console.log(result);
 
       return Response.onSuccess(res, 201, result.rows[0]);
     } catch (error) {

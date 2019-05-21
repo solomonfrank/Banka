@@ -10,7 +10,7 @@
             "url": "https://opensource.org/licenses/MIT"
         }
     },
-    "host": "localhost:5000",
+    "host": "https://banka-api-app.herokuapp.com",
     "basepath": "",
     "tags": [
         {

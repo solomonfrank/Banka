@@ -51,8 +51,9 @@ class UserController {
         return Response.onError(res, 400, 'email already exist');
       }
       console.log(error.stack);
-      return res.status(500).json(error.stack);
-      // return Response.onError(res, 500, error);
+      console.log(process.env.DATABASE_URL);
+      // return res.status(500).json(error.stack);
+      return Response.onError(res, 500, 'server error');
     }
 
     // console.log(result);

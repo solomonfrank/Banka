@@ -13,6 +13,9 @@ class Db {
     this.conn = new Pool({
       connectionString,
     });
+    console.log('connected');
+
+
     return this.conn;
   }
 

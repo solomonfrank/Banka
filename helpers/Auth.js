@@ -7,7 +7,7 @@ import User from '../models/User';
 
 const Auth = {
 
-  async generateToken(data, res) {
+  async generateToken(data) {
     try {
       const token = await jwt.sign({
         key: data,
@@ -15,7 +15,8 @@ const Auth = {
 
       return token;
     } catch (err) {
-      return Response.onError(res, 500, 'Internal server error token');
+      // return Response.onError(res, 500, 'Internal server error token');
+      return false;
     }
   },
 

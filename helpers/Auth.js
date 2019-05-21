@@ -11,11 +11,11 @@ const Auth = {
     try {
       const token = await jwt.sign({
         key: data,
-      }, process.env.SECRET_KEY);
+      }, 'banka');
 
       return token;
     } catch (err) {
-      return Response.onError(res, 500, 'Internal server error');
+      return Response.onError(res, 500, 'Internal server error token');
     }
   },
 

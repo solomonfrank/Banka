@@ -50,8 +50,9 @@ class UserController {
       if (error.routine === '_bt_check_unique') {
         return Response.onError(res, 400, 'email already exist');
       }
-
-      return Response.onError(res, 500, 'internal Server Error');
+      console.log(error.stack);
+      return res.status(500).json(error.stack);
+      // return Response.onError(res, 500, error);
     }
 
     // console.log(result);

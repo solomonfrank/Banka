@@ -43,7 +43,7 @@ app.get('/api/accounts/:accountNum', Auth.verifyToken, Auth.verifyCashier, Staff
 app.delete('/api/accounts/:accountNum', StaffController.deleteAccount);
 app.post('/api/transaction/:accountNum/credit', Auth.verifyToken, Auth.verifyCashier, CashierController.creditAccount);
 app.post('/api/transaction/:accountNum/debit', Auth.verifyToken, Auth.verifyCashier, CashierController.debitAccount);
-// app.get('/api/account/:accountNum',)
+app.get('/', UserController.home);
 
 
 // Set environment Port

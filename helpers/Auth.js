@@ -7,12 +7,16 @@ import User from '../models/User';
 
 const Auth = {
 
-  async generateToken(data) {
-    const token = await jwt.sign({
-      key: data,
-    }, process.env.SECRET_KEY);
+  async generateToken(data, res) {
+    try {
+      const token = await jwt.sign({
+        key: data,
+      }, process.env.SECRET_KEY);
 
-    return token;
+      return token;
+    } catch (err) {
+      return Response.onError(res, 500, 'Internal server error');
+    }
   },
 
   // eslint-disable-next-line consistent-return

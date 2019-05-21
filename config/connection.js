@@ -13,14 +13,16 @@ class Db {
     this.conn = new Pool({
       connectionString,
     });
-    console.log('connected');
+    console.log('connected!');
 
 
     return this.conn;
   }
 
   static async getInstance() {
-    this.pool = new Db();
+    if (!this.pool) {
+      this.pool = new Db();
+    }
 
 
     return this.pool;

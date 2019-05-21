@@ -23,6 +23,11 @@ app.use(
 );
 
 class UserController {
+  static async home(req, res) {
+    // return res.status(200).send('welcome');
+    res.redirect('/api-docs/');
+  }
+
   static async signup(req, res) {
     const schema = Validation.init().validateRegister();
     const clean = Joi.validate(req.body, schema);

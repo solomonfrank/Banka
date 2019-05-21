@@ -34,7 +34,7 @@ class UserController {
       firstName, lastName, email, gender, password,
     } = clean.value;
 
-    const token = await Auth.generateToken(email);
+    const token = await Auth.generateToken(email, res);
     const body = {
       firstName, lastName, email, gender, password, token,
     };
@@ -80,7 +80,7 @@ class UserController {
         type: result.rows[0].type,
 
       };
-      result.rows[0].token = await Auth.generateToken(payload);
+      result.rows[0].token = await Auth.generateToken(payload, res);
 
       return Response.onSuccess(res, 200, result.rows[0]);
     } catch (error) {

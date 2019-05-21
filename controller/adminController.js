@@ -28,7 +28,7 @@ class AdminController {
     if (clean.error) {
       return Response.onError(res, 400, clean.error.details[0].message);
     }
-    const token = await Auth.generateToken(clean.value.email);
+    const token = await Auth.generateToken(clean.value.email, res);
     const body = { ...clean.value, token };
     delete body.confirmPassword;
 

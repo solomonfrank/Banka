@@ -95,7 +95,7 @@
                 }
             }
         },
-        "api/signup": {
+        "/api/signup": {
             "post": {
                 "tags": [
                     "user"

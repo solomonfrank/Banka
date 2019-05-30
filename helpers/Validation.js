@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 
 class Validation {
   sanitizeEmail() {
-    return (Joi.string().email({ minDomainAtoms: 2 }).required());
+    return (Joi.string().email({ minDomainAtoms: 2 }).required().label('email address'));
   }
 
 
@@ -36,11 +36,11 @@ class Validation {
 
   validateRegister() {
     this.schema = {
-      firstName: this.sanitizeName(),
-      lastName: this.sanitizeName(),
+      firstName: this.sanitizeName().label('first name'),
+      lastName: this.sanitizeName().label('last name'),
       email: this.sanitizeEmail(),
       password: this.sanitizePassword(),
-      confirmPassword: this.sanitizeConfirmPassword(),
+      confirmPassword: this.sanitizeConfirmPassword().label('confirm password'),
       gender: this.sanitizeName(),
     };
 

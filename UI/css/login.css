@@ -13,6 +13,11 @@ body{
 	overflow-y:hidden;
 }
 
+.error-flash{
+	background-color:greenyellow;
+
+	color:red;
+}
 .top-title{
 	
 	display:flex;
@@ -287,6 +292,10 @@ font:15px 1.5 arial san serif
 
 /* Extra small devices (phones, 600px and down) */
 
+select{
+	width:77%;
+	padding:10px;
+}
 @media screen and (max-width:600px){
     .form-wrapper{
 	

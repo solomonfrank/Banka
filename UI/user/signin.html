@@ -69,24 +69,24 @@
 						<div class="form-title-alias">
 							<h3> Enjoy Secure data with us! </h3>
 						</div>
-						<form id="form1" method='get'>
+						<form id="form1" method='post' action="">
 
-
+							<div class="error-flash"></div>
 							<div class="form-group">
 								<div for="email" class="form-label">E-mail</div>
 
 								<div class="form-input">
 									<input id="email" type="email" class="form-control" placeholder="ENTER EMAIL HERE"
-										name="email" value="" required autofocus>
+										name="email" value="" required>
 
 								</div>
 							</div>
 							<div class="form-label">
-								<div for="email" class="form-control">Password</div>
+								<div for="password" class="form-control">Password</div>
 
 								<div class="form-input">
-									<input id="email" type="password" class="form-control" name="email"
-										placeholder="ENTER PASSWORD HERE" value="" required autofocus>
+									<input id="password" type="password" class="form-control" name="password"
+										placeholder="ENTER PASSWORD HERE" value="" required>
 
 								</div>
 							</div>
@@ -95,7 +95,7 @@
 
 							<div class="form-group">
 								<div class="remember-wrapper">
-									<button type="submit" name="login" class="btn-submit">
+									<button id="signin-btn" type="submit" name="login" class="btn-submit">
 										Login
 									</button>
 
@@ -128,30 +128,7 @@
 
 
 </body>
-<script>
-	const submitBtn = document.querySelector('.btn-submit');
-	submitBtn.addEventListener('click', event => {
-		let val = document.querySelector('#email').value;
 
-		console.log(val);
-		typeof (val);
-
-
-		if (val === 'staff@banka.com') {
-			window.location.href = 'https://solomonfrank.github.io/UIs/UI/admin/dashboard.html';
-		} else if (val === 'cashier@banka.com') {
-			window.location.href = 'https://solomonfrank.github.io/UIs/UI/cashier/dashboard.html';
-		} else {
-			window.location.href = 'https://solomonfrank.github.io/UIs/UI/user/user-create-account.html';
-		}
-		event.preventDefault();
-
-
-		//alert(val);
-
-	});
-
-</script>
 
 <script src="../js/main.js"></script>
 

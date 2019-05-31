@@ -52,7 +52,7 @@ if (document.querySelector('#signin-btn')) {
 }
 
 
-if (document.querySelector('#signupBtn')) {
+
   document.querySelector('#signupBtn').addEventListener('click', (event) => {
     const json = {
       firstName: document.querySelector('#firstName').value,
@@ -76,7 +76,7 @@ if (document.querySelector('#signupBtn')) {
     event.preventDefault();
 
   });
-}
+
 
 
 document.addEventListener('DOMContentLoaded', () => {

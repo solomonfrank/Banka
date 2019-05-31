@@ -40,7 +40,7 @@ if (document.querySelector('#signin-btn')) {
     const jsonifyBody = JSON.stringify(json);
 
     const params = {
-      url: 'http://localhost:5000/api/signin',
+      url: 'https://banka-api-app.herokuapp.com/api/signin',
       jsonifyBody,
       method: 'Post',
       href: './user-create-account.html',
@@ -66,7 +66,7 @@ if (document.querySelector('#signupBtn')) {
     console.log(jsonifyBody);
 
     const params = {
-      url: 'http://localhost:5000/api/signup',
+      url: 'https://banka-api-app.herokuapp.com/api/signup',
       jsonifyBody,
       method: 'Post',
       href: './signin.html',

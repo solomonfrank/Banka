@@ -1,4 +1,4 @@
-# UIs
+# Banka
 
 
 [![Coverage Status](https://coveralls.io/repos/github/solomonfrank/UIs/badge.svg?branch=master)](https://coveralls.io/github/solomonfrank/UIs?branch=master)
